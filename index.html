@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ivoo.re by silky | Gifts & Jewellery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-bg"></div>
+    <header class="site-header">
+      <div class="brand">
+        <img class="brand-logo" src="assets/ivoo-logo.svg" alt="ivoo.re by silky" />
+        <div class="brand-text">
+          <span class="brand-name">ivoo.re</span>
+          <span class="brand-tag">by silky</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <button class="nav-link" data-scroll="collections">Shop</button>
+        <button class="nav-link" data-scroll="about">About</button>
+        <button class="nav-link" data-scroll="membership">How to order</button>
+        <button class="nav-link" data-scroll="contact">Contact</button>
+      </nav>
+      <div class="header-actions">
+        <button class="pill-btn" id="loginTrigger">Log in</button>
+        <button class="pill-btn ghost" id="logoutTrigger">Log out</button>
+        <button class="cart-btn" id="cartTrigger">
+          Cart
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Gifts made personal</p>
+          <h1>Gift hampers, jewellery, and customized keepsakes.</h1>
+          <p class="hero-sub">
+            ivoo.re by silky curates thoughtful gift hampers, delicate jewellery, and custom-made pieces
+            for every moment. Crafted in Delhi/NCR, shipped pan India.
+          </p>
+          <div class="hero-actions">
+            <button class="pill-btn" data-scroll="collections">Shop the drop</button>
+            <button class="pill-btn ghost" data-scroll="membership">Join the club</button>
+          </div>
+          <div class="hero-metrics">
+            <div>
+              <span class="metric">50+</span>
+              <span class="metric-label">orders completed</span>
+            </div>
+            <div>
+              <span class="metric">COD</span>
+              <span class="metric-label">available</span>
+            </div>
+            <div>
+              <span class="metric">Pan India</span>
+              <span class="metric-label">shipping</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <p>Curated gift hampers with custom notes and premium packaging.</p>
+            <div class="hero-card-tag">Bestseller</div>
+          </div>
+          <div class="hero-glow"></div>
+        </div>
+      </section>
+
+      <section class="collections" id="collections">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Shop</p>
+            <h2>Gift hampers | Jewellery | Customised gifts</h2>
+          </div>
+          <p class="section-sub">
+            Curated hampers, elegant jewellery, and custom pieces. Add to cart or DM us for fully
+            personalized orders.
+          </p>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+
+      <section class="feature-band" id="membership">
+        <div class="feature-copy">
+          <p class="eyebrow">How to order</p>
+          <h2>DM to order on WhatsApp</h2>
+          <p>
+            Share your occasion, budget, and color theme. We will curate a gift hamper or customised piece
+            and send a preview before delivery.
+          </p>
+          <ul class="feature-list">
+            <li>WhatsApp: +91 9266857606</li>
+            <li>COD available</li>
+            <li>Delhi/NCR | Shipping pan India</li>
+          </ul>
+          <a class="pill-btn" href="https://wa.me/c/919266857606" target="_blank" rel="noreferrer">
+            Open WhatsApp catalog
+          </a>
+        </div>
+        <div class="feature-card">
+          <h3>Curated for every celebration</h3>
+          <p>Birthdays, bridesmaids, or surprises — we personalize every detail.</p>
+          <div class="feature-pill">Customer favorite</div>
+        </div>
+      </section>
+
+      <section class="about" id="about">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">About</p>
+            <h2>Thoughtful gifting, made local</h2>
+          </div>
+          <p class="section-sub">
+            ivoo.re by silky is a Delhi/NCR based gifting studio for curated hampers, delicate jewellery,
+            and customised gifts crafted with care.
+          </p>
+        </div>
+        <div class="about-grid">
+          <div class="about-card">
+            <h3>Curated with care</h3>
+            <p>Each hamper is assembled by hand with premium wrapping and notes.</p>
+          </div>
+          <div class="about-card">
+            <h3>Customised to you</h3>
+            <p>Choose colors, themes, or names for a personal touch.</p>
+          </div>
+          <div class="about-card">
+            <h3>Delivered pan India</h3>
+            <p>Fast delivery with COD available for select cities.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2>Let’s curate your next gift</h2>
+          </div>
+          <p class="section-sub">
+            DM to order on WhatsApp or send a note here for custom requests.
+          </p>
+        </div>
+        <form class="contact-form">
+          <input type="text" placeholder="Full name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="text" placeholder="Occasion (birthday, wedding, etc.)" />
+          <textarea placeholder="Tell us about your gift idea" rows="4"></textarea>
+          <button class="pill-btn" type="submit">Send message</button>
+        </form>
+        <p class="modal-note">
+          WhatsApp: +91 9266857606 · Catalog:
+          <a href="https://wa.me/c/919266857606" target="_blank" rel="noreferrer">wa.me/c/919266857606</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <span class="brand-name">ivoo.re</span>
+        <span class="brand-tag">by silky</span>
+      </div>
+      <p>2026 © ivoo.re by silky. All rights reserved.</p>
+    </footer>
+
+    <div class="modal" id="authModal" aria-hidden="true">
+      <div class="modal-card">
+        <button class="close-btn" data-close="authModal">×</button>
+        <h3>Welcome back</h3>
+        <p>Log in to unlock your cart and member perks.</p>
+        <form id="authForm">
+          <label>
+            Email
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" placeholder="••••••" required />
+          </label>
+          <button class="pill-btn" type="submit">Log in</button>
+        </form>
+        <p class="modal-note">Demo mode: any email + password will log you in.</p>
+      </div>
+    </div>
+
+    <div class="modal" id="cartModal" aria-hidden="true">
+      <div class="modal-card cart-card">
+        <button class="close-btn" data-close="cartModal">×</button>
+        <h3>Your cart</h3>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-summary">
+          <div>
+            <span>Subtotal</span>
+            <span id="cartSubtotal">$0</span>
+          </div>
+          <div>
+            <span>Shipping</span>
+            <span id="cartShipping">$0</span>
+          </div>
+          <div class="total">
+            <span>Total</span>
+            <span id="cartTotal">$0</span>
+          </div>
+        </div>
+        <button class="pill-btn" id="checkoutTrigger">Proceed to payment</button>
+      </div>
+    </div>
+
+    <div class="modal" id="paymentModal" aria-hidden="true">
+      <div class="modal-card payment-card">
+        <button class="close-btn" data-close="paymentModal">×</button>
+        <h3>Payment</h3>
+        <p>Secure checkout in demo mode.</p>
+        <form id="paymentForm">
+          <label>
+            Cardholder name
+            <input type="text" name="cardName" placeholder="Silky A." required />
+          </label>
+          <label>
+            Card number
+            <input type="text" name="cardNumber" placeholder="1234 5678 9012 3456" required />
+          </label>
+          <div class="form-row">
+            <label>
+              Expiration
+              <input type="text" name="cardExpiry" placeholder="MM/YY" required />
+            </label>
+            <label>
+              CVC
+              <input type="text" name="cardCvc" placeholder="123" required />
+            </label>
+          </div>
+          <label>
+            Shipping address
+            <input type="text" name="address" placeholder="Street, City, Country" required />
+          </label>
+          <button class="pill-btn" type="submit">Complete payment</button>
+        </form>
+        <p class="modal-note">No real payments are processed.</p>
+      </div>
+    </div>
+
+    <div class="toast" id="toast">Added to cart.</div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
