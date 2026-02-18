@@ -1,40 +1,307 @@
 const products = [
   {
-    id: "sig-01",
-    name: "Black Bracelet - Anti Tarnish",
-    price: 100,
-    description: "Minimal everyday bracelet with anti-tarnish finish.",
-    image: "Website_Images/Black bracelet - Anti Tarnish.png",
+    id: "hamper-01",
+    name: "Big Blue Hamper",
+    price: 1599,
+    description: "Statement hamper with premium wrap and custom note.",
+    image: "Website_Images/Big Blue Hamper.jpg",
+    category: "Signature Big Hampers",
+    featured: true,
   },
   {
-    id: "sig-02",
-    name: "Heart Pendant - Anti Tarnish",
-    price: 100,
-    description: "Sweet heart pendant with durable anti-tarnish polish.",
-    image: "Website_Images/Heart pendant- Anti tarnish.png",
+    id: "hamper-02",
+    name: "Big Blue Hamper (Angle 2)",
+    price: 1599,
+    description: "Alternate view for the Big Blue Hamper.",
+    image: "Website_Images/Big Blue Hamper (1).jpg",
+    category: "Signature Big Hampers",
   },
   {
-    id: "sig-03",
-    name: "Name Engraved Keychain",
-    price: 100,
-    description: "Custom engraved keychain, both sides.",
-    image: "Website_Images/Name engraved keychain, both sides.png",
+    id: "hamper-03",
+    name: "Big Pink Hamper",
+    price: 1599,
+    description: "Pink-themed hamper with custom ribbons and tags.",
+    image: "Website_Images/Big Pink Hamper.jpg",
+    category: "Signature Big Hampers",
+    featured: true,
   },
   {
-    id: "sig-04",
-    name: "Tulip Pendant - Anti Tarnish",
-    price: 100,
-    description: "Elegant tulip pendant with long-lasting shine.",
-    image: "Website_Images/Tulip pendant - Anti Tarnish.png",
+    id: "hamper-04",
+    name: "Big Pink Hamper (Angle 2)",
+    price: 1599,
+    description: "Alternate view for the Big Pink Hamper.",
+    image: "Website_Images/Big Pink Hamper (1).jpg",
+    category: "Signature Big Hampers",
+  },
+  {
+    id: "hamper-05",
+    name: "Handmade Red Rose",
+    price: 499,
+    description: "Handcrafted rose keepsake for romantic gestures.",
+    image: "Website_Images/Handmade Red Rose.jpg",
+    category: "Bouquets & Roses",
+    featured: true,
+  },
+  {
+    id: "hamper-06",
+    name: "Munch Bunch",
+    price: 999,
+    description: "Snack-forward hamper for birthdays and surprises.",
+    image: "Website_Images/Munch Bunch.jpg",
+    category: "Occasion Hampers",
+  },
+  {
+    id: "hamper-07",
+    name: "Pink White Rose Bouquet",
+    price: 899,
+    description: "Soft pastel bouquet with delicate wrapping.",
+    image: "Website_Images/Pink White Rose Bouquet.jpg",
+    category: "Bouquets & Roses",
+  },
+  {
+    id: "hamper-08",
+    name: "Polaroids 5 Star Bouquet",
+    price: 1299,
+    description: "Photo-forward bouquet with premium chocolates.",
+    image: "Website_Images/Polaroids 5 Star Bouquet.jpg",
+    category: "Polaroid Gifts",
+    featured: true,
+  },
+  {
+    id: "hamper-09",
+    name: "Polaroids 5 Star Bouquet (Angle 2)",
+    price: 1299,
+    description: "Alternate view for the 5 Star Polaroid bouquet.",
+    image: "Website_Images/Polaroids 5 Star Bouquet (1).jpg",
+    category: "Polaroid Gifts",
+  },
+  {
+    id: "hamper-10",
+    name: "Polaroids 5 Star Bouquet (Angle 3)",
+    price: 1299,
+    description: "Another photo option for the 5 Star Polaroid bouquet.",
+    image: "Website_Images/Polaroids 5 star bouquet (2).jpg",
+    category: "Polaroid Gifts",
+  },
+  {
+    id: "hamper-11",
+    name: "Polaroids Hamper",
+    price: 1099,
+    description: "Keepsake hamper featuring polaroid memories.",
+    image: "Website_Images/Polaroids.jpg",
+    category: "Polaroid Gifts",
+  },
+  {
+    id: "hamper-12",
+    name: "Sorry Hamper",
+    price: 999,
+    description: "Apology hamper with comfort picks and a note.",
+    image: "Website_Images/Sorry Hamper (1).jpg",
+    category: "Occasion Hampers",
+  },
+  {
+    id: "hamper-13",
+    name: "Sorry Hamper (Angle 2)",
+    price: 999,
+    description: "Alternate view for the Sorry Hamper.",
+    image: "Website_Images/Sorry Hamper (2).jpg",
+    category: "Occasion Hampers",
+  },
+  {
+    id: "hamper-14",
+    name: "Valentine's Big Box Chocolate Hamper",
+    price: 1499,
+    description: "Classic Valentine’s gift with premium chocolates.",
+    image: "Website_Images/Valentine's Big Box Chocolate Hamper.jpg",
+    category: "Valentine's Collection",
+    featured: true,
+  },
+  {
+    id: "hamper-15",
+    name: "Valentine's Big Hamper",
+    price: 1699,
+    description: "Large Valentine’s hamper with extra add-ons.",
+    image: "Website_Images/Valentine's Big Hamper (1).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-16",
+    name: "Valentine's Big Hamper (Angle 2)",
+    price: 1699,
+    description: "Alternate view for the Valentine’s Big Hamper.",
+    image: "Website_Images/Valentine's Big Hamper (2).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-17",
+    name: "Valentine's Card Hamper",
+    price: 1199,
+    description: "Card-forward hamper with a romantic finish.",
+    image: "Website_Images/Valentine's Card Hamper.jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-18",
+    name: "Valentine's Card Hamper (Angle 1)",
+    price: 1199,
+    description: "Alternate view for the card hamper.",
+    image: "Website_Images/Valentine's Card Hamper (1).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-19",
+    name: "Valentine's Card Hamper (Angle 2)",
+    price: 1199,
+    description: "Another angle of the card hamper.",
+    image: "Website_Images/Valentine's Card Hamper (2).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-20",
+    name: "Valentine's Card Hamper (Angle 3)",
+    price: 1199,
+    description: "Card hamper variant styling.",
+    image: "Website_Images/Valentine's Card Hamper (3).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-21",
+    name: "Valentine's Card Hamper (Angle 4)",
+    price: 1199,
+    description: "Alternate view of the card hamper.",
+    image: "Website_Images/Valentine's Card Hamper (4).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-22",
+    name: "Valentine's Card Hamper (Angle 5)",
+    price: 1199,
+    description: "Card hamper styling option.",
+    image: "Website_Images/Valentine's Card Hamper (5).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-23",
+    name: "Valentine's Card Hamper (Angle 6)",
+    price: 1199,
+    description: "Another card hamper angle.",
+    image: "Website_Images/Valentine's Card Hamper (6).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-24",
+    name: "Valentine's Card Hamper (Angle 7)",
+    price: 1199,
+    description: "Alternate view of the card hamper.",
+    image: "Website_Images/Valentine's Card Hamper (7).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-25",
+    name: "Valentine's Card Hamper (Angle 8)",
+    price: 1199,
+    description: "Card hamper with different styling.",
+    image: "Website_Images/Valentine's Card Hamper (8).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-26",
+    name: "Valentine's Card Hamper (Angle 9)",
+    price: 1199,
+    description: "Alternate view of the card hamper.",
+    image: "Website_Images/Valentine's Card Hamper (9).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-27",
+    name: "Valentine's Card Hamper (Angle 10)",
+    price: 1199,
+    description: "More angles for the card hamper.",
+    image: "Website_Images/Valentine's Card Hamper (10).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-28",
+    name: "Valentine's Card Hamper (Angle 12)",
+    price: 1199,
+    description: "Alternate view of the card hamper.",
+    image: "Website_Images/Valentine's Card Hamper (12).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-29",
+    name: "Valentine's Card Hamper (Angle 13)",
+    price: 1199,
+    description: "Card hamper styling variation.",
+    image: "Website_Images/Valentine's Card Hamper (13).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-30",
+    name: "Valentine's Card Hamper (Angle 14)",
+    price: 1199,
+    description: "Alternate view of the card hamper.",
+    image: "Website_Images/Valentine's Card Hamper (14).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-31",
+    name: "Valentine's Card Hamper (Angle 15)",
+    price: 1199,
+    description: "Card hamper with fresh layout.",
+    image: "Website_Images/Valentine's Card Hamper (15).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-32",
+    name: "Valentine's Card Hamper (Angle 16)",
+    price: 1199,
+    description: "Alternate view of the card hamper.",
+    image: "Website_Images/Valentine's Card Hamper (16).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-33",
+    name: "Valentine's Chocolate Hamper (with lights)",
+    price: 1399,
+    description: "Lights-on Valentine’s hamper for a soft glow.",
+    image: "Website_Images/Valentine's Chocolate Hamper (with lights).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-34",
+    name: "Valentine's Chocolate Hamper (with lights) (Angle 2)",
+    price: 1399,
+    description: "Alternate view of the lights hamper.",
+    image: "Website_Images/Valentine's Chocolate Hamper (with lights) (2).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-35",
+    name: "Valentine's Small Chocolate Hamper (with polaroids)",
+    price: 1099,
+    description: "Compact hamper with polaroids and sweets.",
+    image: "Website_Images/Valentine's small Chocolate Hamper (with polaroids).jpg",
+    category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-36",
+    name: "Valentine's Small Hamper (with Teddy)",
+    price: 999,
+    description: "Teddy add-on hamper for cute surprises.",
+    image: "Website_Images/Valentine's small Hamper (with Teddy).jpg",
+    category: "Valentine's Collection",
   },
 ];
 
 const state = {
   cart: JSON.parse(localStorage.getItem("ivooCart") || "[]"),
   user: JSON.parse(localStorage.getItem("ivooUser") || "null"),
+  activeCategory: "All",
 };
 
 const productGrid = document.getElementById("productGrid");
+const categoryFilters = document.getElementById("categoryFilters");
 const cartCount = document.getElementById("cartCount");
 const cartItems = document.getElementById("cartItems");
 const cartSubtotal = document.getElementById("cartSubtotal");
@@ -45,6 +312,7 @@ const toast = document.getElementById("toast");
 const authModal = document.getElementById("authModal");
 const cartModal = document.getElementById("cartModal");
 const paymentModal = document.getElementById("paymentModal");
+const paymentStatus = document.getElementById("paymentStatus");
 
 const loginTrigger = document.getElementById("loginTrigger");
 const logoutTrigger = document.getElementById("logoutTrigger");
@@ -61,6 +329,33 @@ const saveState = () => {
   localStorage.setItem("ivooUser", JSON.stringify(state.user));
 };
 
+const generateOrderItems = () =>
+  state.cart
+    .map((item) => {
+      const product = products.find((entry) => entry.id === item.id);
+      if (!product) return null;
+      return {
+        id: product.id,
+        name: product.name,
+        unitPrice: product.price,
+        qty: item.qty,
+      };
+    })
+    .filter(Boolean);
+
+const getCartTotals = () => {
+  const subtotal = state.cart.reduce((sum, item) => {
+    const product = products.find((entry) => entry.id === item.id);
+    return product ? sum + product.price * item.qty : sum;
+  }, 0);
+  const shipping = 0;
+  return {
+    subtotal,
+    shipping,
+    total: subtotal + shipping,
+  };
+};
+
 const showToast = (message) => {
   toast.textContent = message;
   toast.classList.add("show");
@@ -74,7 +369,11 @@ const setModal = (modal, active) => {
 
 const renderProducts = () => {
   productGrid.innerHTML = "";
-  products.forEach((product) => {
+  const visibleProducts =
+    state.activeCategory === "All"
+      ? products
+      : products.filter((product) => product.category === state.activeCategory);
+  visibleProducts.forEach((product) => {
     const card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
@@ -86,6 +385,8 @@ const renderProducts = () => {
           onerror="this.style.display='none'"
         />
         <span>${product.name.split(" ")[0]}</span>
+        <span class="product-tag">${product.category}</span>
+        ${product.featured ? '<span class="product-badge">Featured</span>' : ""}
       </div>
       <div>
         <h3>${product.name}</h3>
@@ -97,6 +398,28 @@ const renderProducts = () => {
       </div>
     `;
     productGrid.appendChild(card);
+  });
+};
+
+const renderFilters = () => {
+  if (!categoryFilters) return;
+  const categories = Array.from(new Set(products.map((product) => product.category)));
+  const filters = ["All", ...categories];
+  categoryFilters.innerHTML = "";
+  filters.forEach((category) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "filter-btn";
+    if (category === state.activeCategory) {
+      button.classList.add("active");
+    }
+    button.textContent = category;
+    button.addEventListener("click", () => {
+      state.activeCategory = category;
+      renderFilters();
+      renderProducts();
+    });
+    categoryFilters.appendChild(button);
   });
 };
 
@@ -129,12 +452,7 @@ const renderCart = () => {
     cartItems.appendChild(row);
   });
 
-  const subtotal = state.cart.reduce((sum, item) => {
-    const product = products.find((p) => p.id === item.id);
-    return product ? sum + product.price * item.qty : sum;
-  }, 0);
-  const shipping = 0;
-  const total = subtotal + shipping;
+  const { subtotal, shipping, total } = getCartTotals();
 
   cartSubtotal.textContent = formatter.format(subtotal);
   cartShipping.textContent = formatter.format(shipping);
@@ -246,18 +564,60 @@ authForm.addEventListener("submit", (event) => {
 });
 
 const paymentForm = document.getElementById("paymentForm");
-paymentForm.addEventListener("submit", (event) => {
+paymentForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (state.cart.length === 0) {
     showToast("Cart is empty.");
     return;
   }
-  state.cart = [];
-  saveState();
-  updateCartCount();
-  renderCart();
-  setModal(paymentModal, false);
-  showToast("Payment complete. Thank you!");
+  const formData = new FormData(paymentForm);
+  const { subtotal, shipping, total } = getCartTotals();
+  const payload = {
+    customer: {
+      email: state.user?.email || "",
+      name: String(formData.get("customerName") || "").trim(),
+      phone: String(formData.get("customerPhone") || "").trim(),
+      address: String(formData.get("address") || "").trim(),
+    },
+    notes: String(formData.get("notes") || "").trim(),
+    items: generateOrderItems(),
+    amount: {
+      subtotal,
+      shipping,
+      total,
+      currency: "INR",
+    },
+  };
+
+  try {
+    paymentStatus.textContent = "Order status: placing order...";
+    const response = await fetch("/api/create-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error || "Unable to place order right now.");
+    }
+
+    state.cart = [];
+    saveState();
+    updateCartCount();
+    renderCart();
+    paymentForm.reset();
+    paymentStatus.textContent = `Order status: placed (${data.orderId})`;
+    showToast(`Order placed: ${data.orderId}`);
+
+    if (data.paymentUrl) {
+      window.open(data.paymentUrl, "_blank", "noopener,noreferrer");
+    }
+  } catch (error) {
+    paymentStatus.textContent = "Order status: failed";
+    showToast(error.message || "Order failed.");
+  }
 });
 
 const contactForm = document.querySelector(".contact-form");
@@ -268,5 +628,6 @@ contactForm.addEventListener("submit", (event) => {
 });
 
 renderProducts();
+renderFilters();
 updateCartCount();
 updateAuthUI();

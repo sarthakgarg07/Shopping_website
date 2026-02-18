@@ -87,6 +87,7 @@
           </p>
         </div>
 
+        <div class="category-filters" id="categoryFilters"></div>
         <div class="product-grid" id="productGrid"></div>
       </section>
 
@@ -219,34 +220,28 @@
     <div class="modal" id="paymentModal" aria-hidden="true">
       <div class="modal-card payment-card">
         <button class="close-btn" data-close="paymentModal">×</button>
-        <h3>Payment</h3>
-        <p>Secure checkout in demo mode.</p>
+        <h3>Checkout</h3>
+        <p>Place order and pay via UPI. We will confirm your payment instantly once webhook is active.</p>
         <form id="paymentForm">
           <label>
-            Cardholder name
-            <input type="text" name="cardName" placeholder="Silky A." required />
+            Full name
+            <input type="text" name="customerName" placeholder="Your name" required />
           </label>
           <label>
-            Card number
-            <input type="text" name="cardNumber" placeholder="1234 5678 9012 3456" required />
+            Phone
+            <input type="tel" name="customerPhone" placeholder="9876543210" required />
           </label>
-          <div class="form-row">
-            <label>
-              Expiration
-              <input type="text" name="cardExpiry" placeholder="MM/YY" required />
-            </label>
-            <label>
-              CVC
-              <input type="text" name="cardCvc" placeholder="123" required />
-            </label>
-          </div>
           <label>
             Shipping address
             <input type="text" name="address" placeholder="Street, City, Country" required />
           </label>
-          <button class="pill-btn" type="submit">Complete payment</button>
+          <label>
+            Notes (optional)
+            <input type="text" name="notes" placeholder="Color preference, occasion, custom card text" />
+          </label>
+          <button class="pill-btn" type="submit">Place order</button>
         </form>
-        <p class="modal-note">No real payments are processed.</p>
+        <p class="modal-note" id="paymentStatus">Order status: not placed</p>
       </div>
     </div>
 

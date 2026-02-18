@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ivoo.re Admin Orders</title>
+    <style>
+      :root {
+        --ink: #1b1c24;
+        --bg: #f7f8fb;
+        --card: #ffffff;
+        --line: #e8eaf1;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Manrope, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        padding: 24px;
+      }
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+      }
+      .bar {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+      }
+      input,
+      button,
+      select {
+        font: inherit;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid #cfd3df;
+      }
+      button {
+        cursor: pointer;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 12px;
+        border-bottom: 1px solid var(--line);
+      }
+      th {
+        background: #f3f5fb;
+        font-size: 0.85rem;
+      }
+      tr:last-child td {
+        border-bottom: 0;
+      }
+      .note {
+        margin-top: 10px;
+        font-size: 0.88rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Orders</h1>
+      <div class="bar">
+        <input id="adminKey" type="password" placeholder="Admin API key" />
+        <button id="loadBtn" type="button">Load orders</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Phone</th>
+            <th>Total</th>
+            <th>Payment</th>
+            <th>Order</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody id="ordersBody">
+          <tr>
+            <td colspan="7">No data loaded.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note">Use with environment variable `ADMIN_API_KEY` set on Vercel.</p>
+    </div>
+    <script>
+      const body = document.getElementById("ordersBody");
+      const loadBtn = document.getElementById("loadBtn");
+      const adminKeyInput = document.getElementById("adminKey");
+      const formatter = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" });
+
+      const renderRows = (orders) => {
+        if (!orders.length) {
+          body.innerHTML = "<tr><td colspan='7'>No orders found.</td></tr>";
+          return;
+        }
+        body.innerHTML = orders
+          .map((order) => {
+            const created = order.created_at ? new Date(order.created_at).toLocaleString() : "-";
+            return `<tr>
+              <td>${order.order_id || "-"}</td>
+              <td>${order.customer_name || "-"}</td>
+              <td>${order.customer_phone || "-"}</td>
+              <td>${formatter.format(Number(order.amount_total || 0))}</td>
+              <td>${order.payment_status || "-"}</td>
+              <td>${order.order_status || "-"}</td>
+              <td>${created}</td>
+            </tr>`;
+          })
+          .join("");
+      };
+
+      loadBtn.addEventListener("click", async () => {
+        const key = adminKeyInput.value.trim();
+        if (!key) {
+          alert("Enter admin key.");
+          return;
+        }
+        body.innerHTML = "<tr><td colspan='7'>Loading...</td></tr>";
+        try {
+          const response = await fetch("/api/orders", {
+            headers: {
+              "x-admin-key": key,
+            },
+          });
+          const data = await response.json();
+          if (!response.ok) {
+            throw new Error(data.error || "Request failed");
+          }
+          renderRows(data.orders || []);
+        } catch (error) {
+          body.innerHTML = `<tr><td colspan='7'>${error.message}</td></tr>`;
+        }
+      });
+    </script>
+  </body>
+</html>
