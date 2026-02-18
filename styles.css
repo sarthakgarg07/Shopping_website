@@ -826,6 +826,7 @@ main {
     width: 100%;
     overflow-x: auto;
     white-space: nowrap;
+    margin-top: 6px;
     padding-bottom: 4px;
     gap: 14px;
   }
@@ -905,6 +906,7 @@ main {
   .nav-links {
     order: 3;
     width: 100%;
+    margin-top: 8px;
     gap: 12px;
   }
 
