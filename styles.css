@@ -70,7 +70,10 @@ body {
 .brand-logo {
   width: 56px;
   height: 56px;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  padding: 8px;
+  background: #f4cce4;
   border-radius: 18px;
   box-shadow: 0 10px 24px rgba(232, 143, 197, 0.45);
 }
@@ -653,6 +656,11 @@ main {
   color: var(--ink-700);
 }
 
+.dev-credit {
+  opacity: 0.78;
+  font-size: 0.85rem;
+}
+
 .modal {
   position: fixed;
   inset: 0;
@@ -879,6 +887,7 @@ main {
     width: 44px;
     height: 44px;
     border-radius: 14px;
+    padding: 6px;
   }
 
   .brand-name {
