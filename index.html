@@ -264,6 +264,28 @@
       </div>
     </div>
 
+    <div class="modal" id="productModal" aria-hidden="true">
+      <div class="modal-card product-detail-card">
+        <button class="close-btn" data-close="productModal">×</button>
+        <div class="detail-grid">
+          <div class="detail-gallery">
+            <div class="detail-image-wrap">
+              <img id="detailImage" class="detail-image" alt="Product image" />
+            </div>
+            <div class="detail-thumbs" id="detailThumbs"></div>
+          </div>
+          <div class="detail-copy">
+            <p class="eyebrow" id="detailCategory">Category</p>
+            <h3 id="detailName">Product</h3>
+            <p id="detailDescription">Description</p>
+            <p class="detail-price" id="detailPrice">₹0</p>
+            <button class="pill-btn" id="detailAddBtn">Add to cart</button>
+            <p class="modal-note">Tip: tap image to zoom in/out.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="toast" id="toast">Added to cart.</div>
 
     <script src="app.js"></script>

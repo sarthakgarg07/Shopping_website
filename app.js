@@ -347,7 +347,15 @@ const toast = document.getElementById("toast");
 const authModal = document.getElementById("authModal");
 const cartModal = document.getElementById("cartModal");
 const paymentModal = document.getElementById("paymentModal");
+const productModal = document.getElementById("productModal");
 const paymentStatus = document.getElementById("paymentStatus");
+const detailImage = document.getElementById("detailImage");
+const detailThumbs = document.getElementById("detailThumbs");
+const detailCategory = document.getElementById("detailCategory");
+const detailName = document.getElementById("detailName");
+const detailDescription = document.getElementById("detailDescription");
+const detailPrice = document.getElementById("detailPrice");
+const detailAddBtn = document.getElementById("detailAddBtn");
 
 const loginTrigger = document.getElementById("loginTrigger");
 const logoutTrigger = document.getElementById("logoutTrigger");
@@ -363,6 +371,11 @@ const formatter = new Intl.NumberFormat("en-IN", {
   style: "currency",
   currency: "INR",
 });
+
+const detailState = {
+  productId: null,
+  imageIndex: 0,
+};
 
 const saveState = () => {
   localStorage.setItem("ivooCart", JSON.stringify(state.cart));
@@ -416,6 +429,7 @@ const renderProducts = () => {
   visibleProducts.forEach((product) => {
     const card = document.createElement("div");
     card.className = "product-card";
+    card.dataset.id = product.id;
     const imageSlides = product.images
       .map(
         (image, index) => `
@@ -486,6 +500,41 @@ const updateCarousel = (carousel, nextIndex) => {
   dots.forEach((dot, index) => {
     dot.classList.toggle("active", index === boundedIndex);
   });
+};
+
+const renderProductModalImage = (product) => {
+  const images = product.images || [];
+  if (!images.length || !detailImage || !detailThumbs) return;
+  const image = images[detailState.imageIndex] || images[0];
+  detailImage.src = encodeURI(image);
+  detailImage.classList.remove("zoomed");
+
+  detailThumbs.innerHTML = images
+    .map(
+      (entry, index) => `
+      <button type="button" class="detail-thumb ${
+        index === detailState.imageIndex ? "active" : ""
+      }" data-index="${index}" aria-label="Open image ${index + 1}">
+        <img src="${encodeURI(entry)}" alt="${product.name} thumbnail ${index + 1}" />
+      </button>
+    `
+    )
+    .join("");
+};
+
+const openProductModal = (productId) => {
+  const product = products.find((entry) => entry.id === productId);
+  if (!product || !productModal) return;
+
+  detailState.productId = product.id;
+  detailState.imageIndex = 0;
+  if (detailCategory) detailCategory.textContent = product.category;
+  if (detailName) detailName.textContent = product.name;
+  if (detailDescription) detailDescription.textContent = product.description;
+  if (detailPrice) detailPrice.textContent = formatter.format(product.price);
+
+  renderProductModalImage(product);
+  setModal(productModal, true);
 };
 
 const renderFilters = () => {
@@ -659,10 +708,13 @@ const requireLogin = () => {
 };
 
 productGrid.addEventListener("click", (event) => {
+  const card = event.target.closest(".product-card");
+  if (!card) return;
+  const productId = card.dataset.id;
+  if (!productId) return;
   const target = event.target.closest("button");
-  if (!target) return;
 
-  if (target.classList.contains("carousel-btn") || target.classList.contains("carousel-dot")) {
+  if (target && (target.classList.contains("carousel-btn") || target.classList.contains("carousel-dot"))) {
     const carousel = target.closest(".image-carousel");
     if (!carousel) return;
     const currentIndex = Number(carousel.dataset.index || "0");
@@ -677,11 +729,15 @@ productGrid.addEventListener("click", (event) => {
     return;
   }
 
-  if (!target.classList.contains("add-btn")) return;
-  const id = target.dataset.id;
-  if (!id) return;
-  if (!requireLogin()) return;
-  addToCart(id);
+  if (target && target.classList.contains("add-btn")) {
+    const id = target.dataset.id;
+    if (!id) return;
+    if (!requireLogin()) return;
+    addToCart(id);
+    return;
+  }
+
+  openProductModal(productId);
 });
 
 cartTrigger.addEventListener("click", () => {
@@ -732,6 +788,32 @@ Array.from(document.querySelectorAll("[data-close]"), (btn) => {
     if (modal) setModal(modal, false);
   });
 });
+
+if (detailThumbs) {
+  detailThumbs.addEventListener("click", (event) => {
+    const thumb = event.target.closest(".detail-thumb");
+    if (!thumb) return;
+    const product = products.find((entry) => entry.id === detailState.productId);
+    if (!product) return;
+    detailState.imageIndex = Number(thumb.dataset.index || "0");
+    renderProductModalImage(product);
+  });
+}
+
+if (detailImage) {
+  detailImage.addEventListener("click", () => {
+    detailImage.classList.toggle("zoomed");
+  });
+}
+
+if (detailAddBtn) {
+  detailAddBtn.addEventListener("click", () => {
+    if (!detailState.productId) return;
+    if (!requireLogin()) return;
+    addToCart(detailState.productId);
+    if (productModal) setModal(productModal, false);
+  });
+}
 
 Array.from(document.querySelectorAll("[data-scroll]"), (btn) => {
   btn.addEventListener("click", () => {

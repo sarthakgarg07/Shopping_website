@@ -64,30 +64,15 @@ body {
 .brand {
   display: inline-flex;
   align-items: center;
-  padding: 8px 16px;
-  border-radius: 16px;
-  background: linear-gradient(120deg, #ffe4f1 0%, #ffd8ea 60%, #fff3f9 100%);
-  box-shadow: 0 12px 26px rgba(232, 143, 197, 0.34);
-  position: relative;
-}
-
-.brand::after {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: 18px;
-  border: 1px solid rgba(232, 143, 197, 0.38);
-  pointer-events: none;
 }
 
 .brand-name {
   font-family: "Fraunces", serif;
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1;
   color: #1f1626;
-  text-shadow: 0 2px 16px rgba(255, 255, 255, 0.45);
 }
 
 .brand-tag {
@@ -390,6 +375,7 @@ main {
   gap: 16px;
   min-height: 360px;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
 }
 
 .product-image {
@@ -539,6 +525,8 @@ main {
   background: transparent;
   cursor: pointer;
   font-weight: 600;
+  position: relative;
+  z-index: 1;
 }
 
 .add-btn:hover {
@@ -694,6 +682,91 @@ main {
   width: min(520px, 92vw);
 }
 
+.product-detail-card {
+  width: min(920px, 94vw);
+  padding: 26px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 24px;
+}
+
+.detail-gallery {
+  display: grid;
+  gap: 12px;
+}
+
+.detail-image-wrap {
+  background: #fff;
+  border: 1px solid rgba(22, 20, 28, 0.08);
+  border-radius: var(--radius-md);
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.detail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+  transition: transform 0.24s ease;
+}
+
+.detail-image.zoomed {
+  transform: scale(1.55);
+  cursor: zoom-out;
+}
+
+.detail-thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
+  gap: 8px;
+}
+
+.detail-thumb {
+  border: 1px solid rgba(22, 20, 28, 0.15);
+  border-radius: 10px;
+  background: #fff;
+  padding: 4px;
+  cursor: pointer;
+  height: 74px;
+}
+
+.detail-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.detail-thumb.active {
+  border-color: var(--ink-900);
+}
+
+.detail-copy {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.detail-copy h3 {
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
+}
+
+.detail-copy p {
+  color: var(--ink-700);
+}
+
+.detail-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink-900);
+}
+
 .modal-card h3 {
   font-family: "Fraunces", serif;
   font-size: 1.6rem;
@@ -813,7 +886,7 @@ main {
   }
 
   .brand-name {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .brand-tag {
@@ -878,12 +951,11 @@ main {
   }
 
   .brand {
-    padding: 7px 12px;
-    border-radius: 14px;
+    padding: 0;
   }
 
   .brand-name {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     line-height: 1.1;
   }
 
@@ -981,5 +1053,23 @@ main {
   .feature-band,
   .contact {
     padding: 30px 24px;
+  }
+
+  .product-detail-card {
+    width: min(96vw, 560px);
+    padding: 18px;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .detail-image-wrap {
+    min-height: 280px;
+  }
+
+  .detail-thumbs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
