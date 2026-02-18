@@ -353,6 +353,11 @@ const loginTrigger = document.getElementById("loginTrigger");
 const logoutTrigger = document.getElementById("logoutTrigger");
 const cartTrigger = document.getElementById("cartTrigger");
 const checkoutTrigger = document.getElementById("checkoutTrigger");
+const heroCarousel = document.getElementById("heroCarousel");
+const heroDots = document.getElementById("heroDots");
+const heroCounter = document.getElementById("heroCounter");
+const heroPrev = document.getElementById("heroPrev");
+const heroNext = document.getElementById("heroNext");
 
 const formatter = new Intl.NumberFormat("en-IN", {
   style: "currency",
@@ -503,6 +508,92 @@ const renderFilters = () => {
     });
     categoryFilters.appendChild(button);
   });
+};
+
+const initHeroCarousel = () => {
+  if (!heroCarousel) return;
+  const slides = Array.from(heroCarousel.querySelectorAll(".hero-slide"));
+  if (!slides.length) return;
+  let activeIndex = 0;
+  let autoPlayTimer;
+
+  slides.forEach((slide) => {
+    const image = slide.dataset.image;
+    if (image) {
+      slide.style.backgroundImage = `url("${encodeURI(image)}")`;
+    }
+  });
+
+  const goToSlide = (index) => {
+    activeIndex = (index + slides.length) % slides.length;
+    slides.forEach((slide, idx) => {
+      slide.classList.toggle("active", idx === activeIndex);
+    });
+    if (heroDots) {
+      const dots = Array.from(heroDots.querySelectorAll(".hero-dot"));
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle("active", idx === activeIndex);
+      });
+    }
+    if (heroCounter) {
+      heroCounter.textContent = `${activeIndex + 1} / ${slides.length}`;
+    }
+  };
+
+  if (heroDots) {
+    heroDots.innerHTML = slides
+      .map(
+        (_, index) =>
+          `<button type="button" class="hero-dot ${index === 0 ? "active" : ""}" data-index="${index}" aria-label="Go to slide ${
+            index + 1
+          }"></button>`
+      )
+      .join("");
+    heroDots.addEventListener("click", (event) => {
+      const dot = event.target.closest(".hero-dot");
+      if (!dot) return;
+      goToSlide(Number(dot.dataset.index || "0"));
+      restartAutoPlay();
+    });
+  }
+
+  const startAutoPlay = () => {
+    autoPlayTimer = setInterval(() => {
+      goToSlide(activeIndex + 1);
+    }, 4200);
+  };
+
+  const stopAutoPlay = () => {
+    if (autoPlayTimer) {
+      clearInterval(autoPlayTimer);
+      autoPlayTimer = null;
+    }
+  };
+
+  const restartAutoPlay = () => {
+    stopAutoPlay();
+    startAutoPlay();
+  };
+
+  if (heroPrev) {
+    heroPrev.addEventListener("click", () => {
+      goToSlide(activeIndex - 1);
+      restartAutoPlay();
+    });
+  }
+
+  if (heroNext) {
+    heroNext.addEventListener("click", () => {
+      goToSlide(activeIndex + 1);
+      restartAutoPlay();
+    });
+  }
+
+  heroCarousel.addEventListener("mouseenter", stopAutoPlay);
+  heroCarousel.addEventListener("mouseleave", startAutoPlay);
+
+  goToSlide(0);
+  startAutoPlay();
 };
 
 const updateCartCount = () => {
@@ -728,5 +819,6 @@ contactForm.addEventListener("submit", (event) => {
 
 renderProducts();
 renderFilters();
+initHeroCarousel();
 updateCartCount();
 updateAuthUI();

@@ -40,38 +40,61 @@
 
     <main>
       <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">Gifts made personal</p>
-          <h1>Gift hampers, jewellery, and customized keepsakes.</h1>
-          <p class="hero-sub">
-            ivoo.re by silky curates thoughtful gift hampers, delicate jewellery, and custom-made pieces
-            for every moment. Crafted in Delhi/NCR, shipped pan India.
-          </p>
-          <div class="hero-actions">
-            <button class="pill-btn" data-scroll="collections">Shop the drop</button>
-            <button class="pill-btn ghost" data-scroll="membership">Join the club</button>
+        <div class="hero-marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span>🎁 Handmade Hampers</span>
+            <span>•</span>
+            <span>🚚 Free shipping above ₹999</span>
+            <span>•</span>
+            <span>💌 Custom message cards</span>
+            <span>•</span>
+            <span>🧸 Add teddy & polaroids</span>
+            <span>•</span>
+            <span>✨ Same-day dispatch on select orders</span>
           </div>
-          <div class="hero-metrics">
-            <div>
-              <span class="metric">50+</span>
-              <span class="metric-label">orders completed</span>
-            </div>
-            <div>
-              <span class="metric">COD</span>
-              <span class="metric-label">available</span>
-            </div>
-            <div>
-              <span class="metric">Pan India</span>
-              <span class="metric-label">shipping</span>
-            </div>
+          <div class="marquee-track">
+            <span>🎁 Handmade Hampers</span>
+            <span>•</span>
+            <span>🚚 Free shipping above ₹999</span>
+            <span>•</span>
+            <span>💌 Custom message cards</span>
+            <span>•</span>
+            <span>🧸 Add teddy & polaroids</span>
+            <span>•</span>
+            <span>✨ Same-day dispatch on select orders</span>
           </div>
         </div>
-        <div class="hero-visual">
-          <div class="hero-card">
-            <p>Curated gift hampers with custom notes and premium packaging.</p>
-            <div class="hero-card-tag">Bestseller</div>
+
+        <div class="hero-carousel" id="heroCarousel">
+          <div class="hero-track" id="heroTrack">
+            <article class="hero-slide active" data-image="Website_Images/Big Pink Hamper.jpg">
+              <div class="hero-overlay">
+                <p class="eyebrow">New drop</p>
+                <h1>Gift your loved ones with curated hampers.</h1>
+                <button class="pill-btn hero-cta" data-scroll="collections">Order now</button>
+              </div>
+            </article>
+            <article class="hero-slide" data-image="Website_Images/Valentine's Big Box Chocolate Hamper.jpg">
+              <div class="hero-overlay">
+                <p class="eyebrow">Best seller</p>
+                <h1>Chocolate boxes, roses, and memory-filled cards.</h1>
+                <button class="pill-btn hero-cta" data-scroll="collections">Shop collection</button>
+              </div>
+            </article>
+            <article class="hero-slide" data-image="Website_Images/Polaroids 5 Star Bouquet.jpg">
+              <div class="hero-overlay">
+                <p class="eyebrow">Personalized</p>
+                <h1>Polaroid hampers made around your story.</h1>
+                <button class="pill-btn hero-cta" data-scroll="collections">Customize now</button>
+              </div>
+            </article>
           </div>
-          <div class="hero-glow"></div>
+          <button class="hero-nav prev" id="heroPrev" aria-label="Previous slide">‹</button>
+          <button class="hero-nav next" id="heroNext" aria-label="Next slide">›</button>
+          <div class="hero-controls">
+            <div class="hero-dots" id="heroDots"></div>
+            <span class="hero-counter" id="heroCounter">1 / 3</span>
+          </div>
         </div>
       </section>
 
