@@ -59,6 +59,7 @@ body {
   backdrop-filter: blur(18px);
   z-index: 10;
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 24px rgba(22, 20, 28, 0.08);
 }
 
 .brand {
@@ -801,15 +802,17 @@ main {
 
 @media (max-width: 900px) {
   .site-header {
-    padding: 16px 4vw;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 14px 4vw 10px;
+    gap: 10px 12px;
     align-items: center;
-    flex-wrap: wrap;
   }
 
   .brand {
-    flex: 1 1 auto;
-    min-width: 0;
+    justify-self: start;
+    max-width: fit-content;
+    padding: 7px 12px;
   }
 
   .brand-name {
@@ -822,16 +825,17 @@ main {
   }
 
   .nav-links {
-    order: 3;
+    grid-column: 1 / -1;
     width: 100%;
     overflow-x: auto;
     white-space: nowrap;
-    padding-bottom: 4px;
+    padding: 10px 0 2px;
+    border-top: 1px solid rgba(22, 20, 28, 0.08);
     gap: 14px;
   }
 
   .header-actions {
-    flex: 0 0 auto;
+    justify-self: end;
     justify-content: flex-end;
     gap: 8px;
   }
@@ -872,12 +876,13 @@ main {
 
 @media (max-width: 600px) {
   .site-header {
-    row-gap: 10px;
-    padding: 12px 4vw;
+    grid-template-columns: 1fr auto;
+    row-gap: 8px;
+    padding: 10px 4vw 8px;
   }
 
   .brand {
-    padding: 7px 12px;
+    padding: 6px 10px;
     border-radius: 14px;
   }
 
@@ -893,8 +898,8 @@ main {
 
   .header-actions .pill-btn,
   .header-actions .cart-btn {
-    padding: 8px 11px;
-    font-size: 0.88rem;
+    padding: 7px 10px;
+    font-size: 0.82rem;
   }
 
   .cart-count {
@@ -903,13 +908,13 @@ main {
   }
 
   .nav-links {
-    order: 3;
     width: 100%;
-    gap: 12px;
+    gap: 10px;
+    padding-top: 8px;
   }
 
   .nav-link {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .section-header {
