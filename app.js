@@ -1,4 +1,4 @@
-const products = [
+const productEntries = [
   {
     id: "hamper-01",
     name: "Big Blue Hamper",
@@ -294,6 +294,41 @@ const products = [
   },
 ];
 
+const baseName = (name) => name.replace(/\s*\(Angle\s*\d+\)$/i, "").trim();
+
+const mergeProductVariants = (entries) => {
+  const merged = new Map();
+
+  entries.forEach((entry) => {
+    const key = `${entry.category}::${baseName(entry.name)}`;
+    const existing = merged.get(key);
+
+    if (!existing) {
+      merged.set(key, {
+        id: entry.id,
+        name: baseName(entry.name),
+        price: entry.price,
+        description: entry.description,
+        category: entry.category,
+        featured: Boolean(entry.featured),
+        images: [entry.image],
+      });
+      return;
+    }
+
+    if (!existing.images.includes(entry.image)) {
+      existing.images.push(entry.image);
+    }
+    if (entry.featured) {
+      existing.featured = true;
+    }
+  });
+
+  return Array.from(merged.values());
+};
+
+const products = mergeProductVariants(productEntries);
+
 const state = {
   cart: JSON.parse(localStorage.getItem("ivooCart") || "[]"),
   user: JSON.parse(localStorage.getItem("ivooUser") || "null"),
@@ -376,15 +411,46 @@ const renderProducts = () => {
   visibleProducts.forEach((product) => {
     const card = document.createElement("div");
     card.className = "product-card";
+    const imageSlides = product.images
+      .map(
+        (image, index) => `
+        <img
+          class="carousel-image ${index === 0 ? "active" : ""}"
+          src="${encodeURI(image)}"
+          alt="${product.name} view ${index + 1}"
+          loading="lazy"
+          data-index="${index}"
+        />
+      `
+      )
+      .join("");
+    const imageDots = product.images
+      .map(
+        (_, index) => `
+        <button
+          type="button"
+          class="carousel-dot ${index === 0 ? "active" : ""}"
+          data-action="jump"
+          data-index="${index}"
+          aria-label="View image ${index + 1}"
+        ></button>
+      `
+      )
+      .join("");
     card.innerHTML = `
       <div class="product-image">
-        <img
-          src="${encodeURI(product.image)}"
-          alt="${product.name}"
-          onload="this.nextElementSibling && (this.nextElementSibling.style.display='none')"
-          onerror="this.style.display='none'"
-        />
-        <span>${product.name.split(" ")[0]}</span>
+        <div class="image-carousel" data-index="0">
+          ${imageSlides}
+          ${
+            product.images.length > 1
+              ? `
+            <button type="button" class="carousel-btn prev" data-action="prev" aria-label="Previous image">‹</button>
+            <button type="button" class="carousel-btn next" data-action="next" aria-label="Next image">›</button>
+            <div class="carousel-dots">${imageDots}</div>
+          `
+              : ""
+          }
+        </div>
         <span class="product-tag">${product.category}</span>
         ${product.featured ? '<span class="product-badge">Featured</span>' : ""}
       </div>
@@ -398,6 +464,22 @@ const renderProducts = () => {
       </div>
     `;
     productGrid.appendChild(card);
+  });
+};
+
+const updateCarousel = (carousel, nextIndex) => {
+  const slides = Array.from(carousel.querySelectorAll(".carousel-image"));
+  const dots = Array.from(carousel.querySelectorAll(".carousel-dot"));
+  if (!slides.length) return;
+
+  const boundedIndex = (nextIndex + slides.length) % slides.length;
+  carousel.dataset.index = String(boundedIndex);
+
+  slides.forEach((slide, index) => {
+    slide.classList.toggle("active", index === boundedIndex);
+  });
+  dots.forEach((dot, index) => {
+    dot.classList.toggle("active", index === boundedIndex);
   });
 };
 
@@ -488,6 +570,23 @@ const requireLogin = () => {
 productGrid.addEventListener("click", (event) => {
   const target = event.target.closest("button");
   if (!target) return;
+
+  if (target.classList.contains("carousel-btn") || target.classList.contains("carousel-dot")) {
+    const carousel = target.closest(".image-carousel");
+    if (!carousel) return;
+    const currentIndex = Number(carousel.dataset.index || "0");
+    const action = target.dataset.action;
+    if (action === "prev") {
+      updateCarousel(carousel, currentIndex - 1);
+    } else if (action === "next") {
+      updateCarousel(carousel, currentIndex + 1);
+    } else if (action === "jump") {
+      updateCarousel(carousel, Number(target.dataset.index || "0"));
+    }
+    return;
+  }
+
+  if (!target.classList.contains("add-btn")) return;
   const id = target.dataset.id;
   if (!id) return;
   if (!requireLogin()) return;
