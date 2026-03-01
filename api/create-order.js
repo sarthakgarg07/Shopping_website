@@ -1,5 +1,7 @@
 const crypto = require("crypto");
 const { hasConfig, supabaseRequest } = require("./_lib/supabase");
+const { products } = require("./_lib/products");
+const Razorpay = require("razorpay");
 
 const ORDER_PREFIX = "IVO";
 
@@ -35,11 +37,34 @@ module.exports = async (req, res) => {
     if (!items.length) {
       return json(res, 400, { error: "Cart is empty." });
     }
-    if (!amount.total || Number(amount.total) <= 0) {
+
+    let calculatedSubtotal = 0;
+    for (const item of items) {
+      const product = products.find(p => p.id === item.id);
+      if (!product) {
+        return json(res, 400, { error: `Invalid product in cart: ${item.id}` });
+      }
+      calculatedSubtotal += product.price * (item.qty || 1);
+    }
+
+    if (calculatedSubtotal <= 0) {
       return json(res, 400, { error: "Invalid order amount." });
     }
 
     const orderId = createOrderId();
+    const finalAmount = calculatedSubtotal + Number(amount.shipping || 0);
+
+    const razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET,
+    });
+
+    const razorpayOrder = await razorpay.orders.create({
+      amount: finalAmount * 100, // amount in paisa
+      currency: "INR",
+      receipt: orderId,
+    });
+
     const orderRow = {
       order_id: orderId,
       customer_email: customer.email || null,
@@ -48,35 +73,30 @@ module.exports = async (req, res) => {
       shipping_address: customer.address,
       notes: body.notes || null,
       items_json: items,
-      amount_subtotal: Number(amount.subtotal || 0),
+      amount_subtotal: calculatedSubtotal,
       amount_shipping: Number(amount.shipping || 0),
-      amount_total: Number(amount.total),
+      amount_total: finalAmount,
       currency: amount.currency || "INR",
       payment_status: "pending",
       order_status: "created",
       source: "website",
+      gateway_order_id: razorpayOrder.id,
     };
 
     await supabaseRequest("orders", {
       method: "POST",
-      headers: {
-        Prefer: "return=minimal",
-      },
+      headers: { Prefer: "return=minimal" },
       body: JSON.stringify(orderRow),
     });
-
-    const manualUpiId = process.env.UPI_ID || "";
-    const paymentUrl = manualUpiId
-      ? `upi://pay?pa=${encodeURIComponent(manualUpiId)}&pn=${encodeURIComponent(
-          "ivoo.re by silky"
-        )}&am=${encodeURIComponent(String(amount.total))}&cu=INR&tn=${encodeURIComponent(orderId)}`
-      : null;
 
     return json(res, 200, {
       ok: true,
       orderId,
-      paymentUrl,
-      message: "Order created. Awaiting payment confirmation.",
+      razorpayOrderId: razorpayOrder.id,
+      amount: finalAmount,
+      currency: "INR",
+      keyId: process.env.RAZORPAY_KEY_ID,
+      message: "Order created successfully.",
     });
   } catch (error) {
     return json(res, 500, { error: error.message || "Unable to create order." });

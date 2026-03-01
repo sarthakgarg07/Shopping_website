@@ -460,15 +460,14 @@ const renderProducts = () => {
       <div class="product-image">
         <div class="image-carousel" data-index="0">
           ${imageSlides}
-          ${
-            product.images.length > 1
-              ? `
+          ${product.images.length > 1
+        ? `
             <button type="button" class="carousel-btn prev" data-action="prev" aria-label="Previous image">‹</button>
             <button type="button" class="carousel-btn next" data-action="next" aria-label="Next image">›</button>
             <div class="carousel-dots">${imageDots}</div>
           `
-              : ""
-          }
+        : ""
+      }
         </div>
         <span class="product-tag">${product.category}</span>
         ${product.featured ? '<span class="product-badge">Featured</span>' : ""}
@@ -512,9 +511,8 @@ const renderProductModalImage = (product) => {
   detailThumbs.innerHTML = images
     .map(
       (entry, index) => `
-      <button type="button" class="detail-thumb ${
-        index === detailState.imageIndex ? "active" : ""
-      }" data-index="${index}" aria-label="Open image ${index + 1}">
+      <button type="button" class="detail-thumb ${index === detailState.imageIndex ? "active" : ""
+        }" data-index="${index}" aria-label="Open image ${index + 1}">
         <img src="${encodeURI(entry)}" alt="${product.name} thumbnail ${index + 1}" />
       </button>
     `
@@ -593,8 +591,7 @@ const initHeroCarousel = () => {
     heroDots.innerHTML = slides
       .map(
         (_, index) =>
-          `<button type="button" class="hero-dot ${index === 0 ? "active" : ""}" data-index="${index}" aria-label="Go to slide ${
-            index + 1
+          `<button type="button" class="hero-dot ${index === 0 ? "active" : ""}" data-index="${index}" aria-label="Go to slide ${index + 1
           }"></button>`
       )
       .join("");
@@ -883,8 +880,65 @@ paymentForm.addEventListener("submit", async (event) => {
     paymentStatus.textContent = `Order status: placed (${data.orderId})`;
     showToast(`Order placed: ${data.orderId}`);
 
-    if (data.paymentUrl) {
-      window.open(data.paymentUrl, "_blank", "noopener,noreferrer");
+    if (data.razorpayOrderId) {
+      const options = {
+        key: data.keyId,
+        amount: data.amount * 100,
+        currency: data.currency,
+        name: "ivoo.re by silky",
+        description: "Order " + data.orderId,
+        order_id: data.razorpayOrderId,
+        handler: async function (response) {
+          try {
+            paymentStatus.textContent = "Verifying payment...";
+            const verifyRes = await fetch("/api/verify-payment", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature
+              })
+            });
+
+            const verifyData = await verifyRes.json();
+            if (!verifyRes.ok) {
+              throw new Error(verifyData.error || "Verification failed");
+            }
+            paymentStatus.textContent = `Payment successful. Txn: ${response.razorpay_payment_id}`;
+            showToast("Payment successful!");
+
+            // Allow the user to close the modal after a successful payment
+            setTimeout(() => {
+              setModal(paymentModal, false);
+            }, 3000);
+
+          } catch (err) {
+            paymentStatus.textContent = "Payment verification failed.";
+            showToast("Payment verification failed.");
+          }
+        },
+        prefill: {
+          name: payload.customer.name,
+          email: payload.customer.email,
+          contact: payload.customer.phone
+        },
+        theme: {
+          color: "#1b1c24"
+        }
+      };
+
+      if (typeof window.Razorpay === "undefined") {
+        showToast("Payment system is loading. Please reload the page.");
+        return;
+      }
+
+      const rzp = new window.Razorpay(options);
+      rzp.on("payment.failed", function (response) {
+        paymentStatus.textContent = "Payment failed. Please try again.";
+        showToast("Payment failed.");
+      });
+      rzp.open();
     }
   } catch (error) {
     paymentStatus.textContent = "Order status: failed";
