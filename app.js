@@ -925,6 +925,34 @@ paymentForm.addEventListener("submit", async (event) => {
         },
         theme: {
           color: "#1b1c24"
+        },
+        config: {
+          display: {
+            blocks: {
+              upi: {
+                name: "Pay via UPI",
+                instruments: [
+                  { method: "upi" }
+                ]
+              },
+              cards: {
+                name: "Pay via Cards",
+                instruments: [
+                  { method: "card" }
+                ]
+              },
+              netbanking: {
+                name: "Pay via Netbanking",
+                instruments: [
+                  { method: "netbanking" }
+                ]
+              }
+            },
+            sequence: ["block.upi", "block.cards", "block.netbanking"],
+            preferences: {
+              show_default_blocks: true
+            }
+          }
         }
       };
 
