@@ -354,6 +354,9 @@ const cartTotal = document.getElementById("cartTotal");
 const toast = document.getElementById("toast");
 
 const authModal = document.getElementById("authModal");
+const myOrdersModal = document.getElementById("myOrdersModal");
+const myOrdersTrigger = document.getElementById("myOrdersTrigger");
+const ordersList = document.getElementById("ordersList");
 const cartModal = document.getElementById("cartModal");
 const paymentModal = document.getElementById("paymentModal");
 const productModal = document.getElementById("productModal");
@@ -703,6 +706,9 @@ const updateAuthUI = () => {
   const loggedIn = Boolean(state.user);
   loginTrigger.style.display = loggedIn ? "none" : "inline-flex";
   logoutTrigger.style.display = loggedIn ? "inline-flex" : "none";
+  if (myOrdersTrigger) {
+    myOrdersTrigger.style.display = loggedIn ? "inline-flex" : "none";
+  }
 };
 
 const requireLogin = () => {
@@ -794,6 +800,44 @@ Array.from(document.querySelectorAll("[data-close]"), (btn) => {
     if (modal) setModal(modal, false);
   });
 });
+
+if (myOrdersTrigger) {
+  myOrdersTrigger.addEventListener("click", async () => {
+    setModal(myOrdersModal, true);
+    if (!state.user?.email) return;
+
+    ordersList.innerHTML = `<p style="color: var(--gray);">Loading orders...</p>`;
+
+    try {
+      const response = await fetch(`/api/my-orders?email=${encodeURIComponent(state.user.email)}`);
+      const data = await response.json();
+
+      if (!response.ok || !data.orders || data.orders.length === 0) {
+        ordersList.innerHTML = `<p style="color: var(--gray);">No orders found for this email.</p>`;
+        return;
+      }
+
+      ordersList.innerHTML = data.orders.map(order => `
+        <div style="border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <strong>Order ${order.order_id}</strong>
+            <span style="background: var(--surface); padding: 2px 8px; border-radius: 12px; font-size: 0.8rem;">
+              ${order.order_status === 'confirmed' ? 'Confirmed' : 'Pending'}
+            </span>
+          </div>
+          <p style="margin: 0; font-size: 0.9rem; color: var(--gray);">
+            Date: ${new Date(order.created_at).toLocaleDateString()}<br>
+            Total: ${formatter.format(order.amount_total)}<br>
+            Payment: ${order.payment_status === 'paid' ? 'Paid ✅' : 'Pending ⏳'}
+          </p>
+        </div>
+      `).join("");
+
+    } catch (err) {
+      ordersList.innerHTML = `<p style="color: var(--text-error);">Could not load orders.</p>`;
+    }
+  });
+}
 
 if (detailThumbs) {
   detailThumbs.addEventListener("click", (event) => {

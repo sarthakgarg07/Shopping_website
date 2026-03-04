@@ -37,6 +37,7 @@
     </nav>
     <div class="header-actions">
       <button class="pill-btn" id="loginTrigger">Log in</button>
+      <button class="pill-btn ghost" id="myOrdersTrigger" style="display: none;">My orders</button>
       <button class="pill-btn ghost" id="logoutTrigger">Log out</button>
       <button class="cart-btn" id="cartTrigger">
         Cart
@@ -203,6 +204,17 @@
     <p>2026 © ivoo.re. All rights reserved.</p>
     <p class="dev-credit">Developed by Sarthak</p>
   </footer>
+
+  <div class="modal" id="myOrdersModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="close-btn" data-close="myOrdersModal">×</button>
+      <h3>My Orders</h3>
+      <p>Here are your recent orders linked to your email.</p>
+      <div id="ordersList" style="margin-top: 1rem; max-height: 50vh; overflow-y: auto;">
+        <p style="color: var(--gray);">Loading orders...</p>
+      </div>
+    </div>
+  </div>
 
   <div class="modal" id="authModal" aria-hidden="true">
     <div class="modal-card">
