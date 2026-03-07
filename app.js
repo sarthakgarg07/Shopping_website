@@ -878,6 +878,34 @@ adminLoginForm.addEventListener("submit", async (e) => {
   }
 });
 
+window.updateOrderStatus = async function (selectElement, orderId) {
+  const token = localStorage.getItem("adminToken");
+  const newStatus = selectElement.value;
+  selectElement.disabled = true;
+
+  try {
+    const res = await fetch("/api/update-order-status", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ order_id: orderId, new_status: newStatus })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      showToast("Order status updated!");
+    } else {
+      showToast(data.error || "Failed to update status");
+      // Could revert selection here if we strictly wanted
+    }
+  } catch (err) {
+    showToast("Network error");
+  } finally {
+    selectElement.disabled = false;
+  }
+};
+
 function loadAdminOrders(token) {
   adminOrdersList.innerHTML = `<p style="color: var(--gray);">Loading orders...</p>`;
   fetch("/api/admin-orders", {
@@ -889,22 +917,35 @@ function loadAdminOrders(token) {
         adminOrdersList.innerHTML = `<p style="color: var(--gray);">No orders found.</p>`;
         return;
       }
+
+      const statuses = ['pending', 'confirmed', 'packed', 'in transit', 'delivered', 'cancelled'];
+
       adminOrdersList.innerHTML = data.orders
-        .map(order => `
-          <div style="border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:1rem;">
-            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
-              <strong>Order ${order.order_id}</strong>
-              <span style="background:var(--surface);padding:2px 8px;border-radius:12px;font-size:0.8rem;">
-                ${order.order_status === 'confirmed' ? 'Confirmed' : 'Pending'}
-              </span>
+        .map(order => {
+          const statusOptions = statuses.map(st =>
+            `<option value="${st}" ${order.order_status === st ? 'selected' : ''}>${st.charAt(0).toUpperCase() + st.slice(1)}</option>`
+          ).join("");
+
+          return `
+          <div style="border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:1rem; font-size:0.9rem;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;align-items:center;">
+              <strong>${order.order_id}</strong>
+              <select 
+                class="status-select" 
+                style="padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); font-family: inherit; font-size: 0.8rem; background: var(--surface);"
+                onchange="updateOrderStatus(this, '${order.order_id}')"
+              >
+                ${statusOptions}
+              </select>
             </div>
-            <p style="margin:0;font-size:0.9rem;color:var(--gray);">
+            <p style="margin:0;color:var(--gray);">
+              Email: ${order.customer_email}<br>
               Date: ${new Date(order.created_at).toLocaleDateString()}<br>
               Total: ${formatter.format(order.amount_total)}<br>
               Payment: ${order.payment_status === 'paid' ? 'Paid ✅' : 'Pending ⏳'}
             </p>
           </div>
-        `)
+        `})
         .join("");
     })
     .catch(() => {
