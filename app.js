@@ -984,18 +984,33 @@ Array.from(document.querySelectorAll("[data-scroll]"), (btn) => {
   });
 });
 
-const authForm = document.getElementById("authForm");
-authForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const formData = new FormData(authForm);
-  state.user = {
-    email: formData.get("email"),
-  };
-  saveState();
-  updateAuthUI();
-  setModal(authModal, false);
-  showToast("Welcome back!");
-});
+// Google Sign-In Handler
+window.handleGoogleLogin = (response) => {
+  try {
+    const base64Url = response.credential.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    const payload = JSON.parse(jsonPayload);
+
+    state.user = {
+      email: payload.email,
+      name: payload.name,
+      picture: payload.picture
+    };
+    saveState();
+    updateAuthUI();
+    setModal(document.getElementById("authModal"), false);
+
+    const firstName = payload.name.split(' ')[0];
+    showToast(`Welcome, ${firstName}!`);
+  } catch (err) {
+    console.error("Google login failed", err);
+    showToast("Login failed. Please try again.");
+  }
+};
 
 const paymentForm = document.getElementById("paymentForm");
 paymentForm.addEventListener("submit", async (event) => {

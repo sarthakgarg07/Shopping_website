@@ -21,6 +21,7 @@
     href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
 <body>
@@ -251,14 +252,16 @@
     <div class="modal-card">
       <button class="close-btn" data-close="authModal">×</button>
       <h3>Welcome back</h3>
-      <p>Log in to unlock your cart and member perks.</p>
-      <form id="authForm">
-        <label>
-          Email
-          <input type="email" name="email" placeholder="you@example.com" required />
-        </label>
-        <button class="pill-btn" type="submit">Log in</button>
-      </form>
+      <p>Sign in with your Google account to unlock your cart and track orders.</p>
+
+      <div style="margin-top: 24px; display: flex; justify-content: center;">
+        <div id="g_id_onload" data-client_id="799450308750-q6l1kot546603usedhkmjasdn07vqgkf.apps.googleusercontent.com"
+          data-context="signin" data-ux_mode="popup" data-callback="handleGoogleLogin" data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="signin_with"
+          data-size="large" data-logo_alignment="left">
+        </div>
+      </div>
     </div>
   </div>
 
