@@ -942,9 +942,10 @@ main {
   }
 
   .header-actions {
-    flex: 0 0 auto;
+    flex: 0 1 auto;
     justify-content: flex-end;
     gap: 8px;
+    flex-wrap: wrap;
   }
 
   .header-actions .pill-btn,
@@ -1003,11 +1004,16 @@ main {
     letter-spacing: 0.06rem;
   }
 
+  .header-actions {
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
   .header-actions .pill-btn,
   .header-actions .cart-btn {
-    padding: 10px 12px;
-    font-size: 0.88rem;
-    min-height: 44px;
+    padding: 8px 10px;
+    font-size: 0.8rem;
+    min-height: 38px;
     /* Better touch target */
   }
 
