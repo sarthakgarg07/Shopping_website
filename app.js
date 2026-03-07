@@ -431,10 +431,35 @@ const showToast = (message) => {
   setTimeout(() => toast.classList.remove("show"), 1800);
 };
 
+let backTimeout;
+const updateHistoryState = () => {
+  const anyModalActive = document.querySelectorAll('.modal.active').length > 0;
+  const isModalState = history.state && history.state.modalOpen;
+
+  if (anyModalActive && !isModalState) {
+    history.pushState({ modalOpen: true }, "", window.location.href);
+  } else if (!anyModalActive && isModalState) {
+    history.back();
+  }
+};
+
 const setModal = (modal, active) => {
   modal.classList.toggle("active", active);
   modal.setAttribute("aria-hidden", String(!active));
+
+  clearTimeout(backTimeout);
+  backTimeout = setTimeout(updateHistoryState, 50);
 };
+
+window.addEventListener("popstate", (event) => {
+  clearTimeout(backTimeout);
+  if (!event.state || !event.state.modalOpen) {
+    document.querySelectorAll('.modal.active').forEach(m => {
+      m.classList.remove("active");
+      m.setAttribute("aria-hidden", "true");
+    });
+  }
+});
 
 const renderProducts = () => {
   productGrid.innerHTML = "";
