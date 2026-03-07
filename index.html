@@ -39,7 +39,7 @@
     <div class="header-actions">
       <button class="pill-btn" id="loginTrigger">Log in</button>
       <button class="pill-btn ghost" id="myOrdersTrigger" style="display: none;">My orders</button>
-      <button class="pill-btn ghost" id="adminTrigger">Admin</button>
+      <a href="/admin.html" class="pill-btn ghost" id="adminTrigger">Admin</a>
       <button class="pill-btn ghost" id="logoutTrigger">Log out</button>
       <button class="cart-btn" id="cartTrigger">
         Cart
@@ -48,35 +48,7 @@
     </div>
   </header>
 
-  <!-- Admin Login Modal -->
-  <div class="modal" id="adminLoginModal" aria-hidden="true">
-    <div class="modal-card">
-      <button class="close-btn" data-close="adminLoginModal">×</button>
-      <h3>Admin Login</h3>
-      <form id="adminLoginForm">
-        <label>
-          Username
-          <input type="text" name="username" placeholder="admin" required />
-        </label>
-        <label>
-          Password
-          <input type="password" name="password" placeholder="••••••" required />
-        </label>
-        <button class="pill-btn" type="submit">Log in</button>
-      </form>
-    </div>
-  </div>
 
-  <!-- Admin Orders Modal -->
-  <div class="modal" id="adminModal" aria-hidden="true">
-    <div class="modal-card">
-      <button class="close-btn" data-close="adminModal">×</button>
-      <h3>All Orders (Admin)</h3>
-      <div id="adminOrdersList" style="margin-top: 1rem; max-height: 60vh; overflow-y: auto;">
-        <p style="color: var(--gray);">Loading orders...</p>
-      </div>
-    </div>
-  </div>
 
   <main>
     <section class="hero">

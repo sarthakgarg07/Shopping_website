@@ -353,11 +353,7 @@ const cartShipping = document.getElementById("cartShipping");
 const cartTotal = document.getElementById("cartTotal");
 const toast = document.getElementById("toast");
 
-const adminLoginModal = document.getElementById("adminLoginModal");
-const adminLoginForm = document.getElementById("adminLoginForm");
 const adminTrigger = document.getElementById("adminTrigger");
-const adminModal = document.getElementById("adminModal");
-const adminOrdersList = document.getElementById("adminOrdersList");
 const myOrdersModal = document.getElementById("myOrdersModal");
 const myOrdersTrigger = document.getElementById("myOrdersTrigger");
 const ordersList = document.getElementById("ordersList");
@@ -838,120 +834,7 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// Admin login handling
-adminTrigger.addEventListener("click", async () => {
-  const token = localStorage.getItem("adminToken");
-  if (token) {
-    // Already logged in, show admin orders
-    setModal(adminModal, true);
-    loadAdminOrders(token);
-  } else {
-    // Show admin login modal
-    setModal(adminLoginModal, true);
-  }
-});
 
-adminLoginForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const formData = new FormData(adminLoginForm);
-  const username = formData.get("username");
-  const password = formData.get("password");
-  try {
-    const res = await fetch("/api/admin-login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password })
-    });
-    const data = await res.json();
-    if (res.ok && data.token) {
-      localStorage.setItem("adminToken", data.token);
-      setModal(adminLoginModal, false);
-      adminTrigger.textContent = "Admin";
-      // Show admin orders immediately
-      setModal(adminModal, true);
-      loadAdminOrders(data.token);
-    } else {
-      showToast(data.error || "Admin login failed");
-    }
-  } catch (err) {
-    showToast("Network error during admin login");
-  }
-});
-
-window.updateOrderStatus = async function (selectElement, orderId) {
-  const token = localStorage.getItem("adminToken");
-  const newStatus = selectElement.value;
-  selectElement.disabled = true;
-
-  try {
-    const res = await fetch("/api/update-order-status", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ order_id: orderId, new_status: newStatus })
-    });
-    const data = await res.json();
-    if (res.ok) {
-      showToast("Order status updated!");
-    } else {
-      showToast(data.error || "Failed to update status");
-      // Could revert selection here if we strictly wanted
-    }
-  } catch (err) {
-    showToast("Network error");
-  } finally {
-    selectElement.disabled = false;
-  }
-};
-
-function loadAdminOrders(token) {
-  adminOrdersList.innerHTML = `<p style="color: var(--gray);">Loading orders...</p>`;
-  fetch("/api/admin-orders", {
-    headers: { Authorization: `Bearer ${token}` }
-  })
-    .then(r => r.json())
-    .then(data => {
-      if (!data.orders || data.orders.length === 0) {
-        adminOrdersList.innerHTML = `<p style="color: var(--gray);">No orders found.</p>`;
-        return;
-      }
-
-      const statuses = ['pending', 'confirmed', 'packed', 'in transit', 'delivered', 'cancelled'];
-
-      adminOrdersList.innerHTML = data.orders
-        .map(order => {
-          const statusOptions = statuses.map(st =>
-            `<option value="${st}" ${order.order_status === st ? 'selected' : ''}>${st.charAt(0).toUpperCase() + st.slice(1)}</option>`
-          ).join("");
-
-          return `
-          <div style="border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:1rem; font-size:0.9rem;">
-            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;align-items:center;">
-              <strong>${order.order_id}</strong>
-              <select 
-                class="status-select" 
-                style="padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); font-family: inherit; font-size: 0.8rem; background: var(--surface);"
-                onchange="updateOrderStatus(this, '${order.order_id}')"
-              >
-                ${statusOptions}
-              </select>
-            </div>
-            <p style="margin:0;color:var(--gray);">
-              Email: ${order.customer_email}<br>
-              Date: ${new Date(order.created_at).toLocaleDateString()}<br>
-              Total: ${formatter.format(order.amount_total)}<br>
-              Payment: ${order.payment_status === 'paid' ? 'Paid ✅' : 'Pending ⏳'}
-            </p>
-          </div>
-        `})
-        .join("");
-    })
-    .catch(() => {
-      adminOrdersList.innerHTML = `<p style="color: var(--text-error);">Failed to load orders.</p>`;
-    });
-}
 
 
 if (myOrdersTrigger) {
