@@ -353,7 +353,11 @@ const cartShipping = document.getElementById("cartShipping");
 const cartTotal = document.getElementById("cartTotal");
 const toast = document.getElementById("toast");
 
-const authModal = document.getElementById("authModal");
+const adminLoginModal = document.getElementById("adminLoginModal");
+const adminLoginForm = document.getElementById("adminLoginForm");
+const adminTrigger = document.getElementById("adminTrigger");
+const adminModal = document.getElementById("adminModal");
+const adminOrdersList = document.getElementById("adminOrdersList");
 const myOrdersModal = document.getElementById("myOrdersModal");
 const myOrdersTrigger = document.getElementById("myOrdersTrigger");
 const ordersList = document.getElementById("ordersList");
@@ -793,6 +797,7 @@ logoutTrigger.addEventListener("click", () => {
   showToast("Logged out.");
 });
 
+// Modal close utilities
 Array.from(document.querySelectorAll("[data-close]"), (btn) => {
   btn.addEventListener("click", () => {
     const id = btn.dataset.close;
@@ -800,6 +805,88 @@ Array.from(document.querySelectorAll("[data-close]"), (btn) => {
     if (modal) setModal(modal, false);
   });
 });
+
+// Close modals when clicking outside the modal-card
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("modal")) {
+    setModal(event.target, false);
+  }
+});
+
+// Admin login handling
+adminTrigger.addEventListener("click", async () => {
+  const token = localStorage.getItem("adminToken");
+  if (token) {
+    // Already logged in, show admin orders
+    setModal(adminModal, true);
+    loadAdminOrders(token);
+  } else {
+    // Show admin login modal
+    setModal(adminLoginModal, true);
+  }
+});
+
+adminLoginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const formData = new FormData(adminLoginForm);
+  const username = formData.get("username");
+  const password = formData.get("password");
+  try {
+    const res = await fetch("/api/admin-login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    });
+    const data = await res.json();
+    if (res.ok && data.token) {
+      localStorage.setItem("adminToken", data.token);
+      setModal(adminLoginModal, false);
+      adminTrigger.textContent = "Admin";
+      // Show admin orders immediately
+      setModal(adminModal, true);
+      loadAdminOrders(data.token);
+    } else {
+      showToast(data.error || "Admin login failed");
+    }
+  } catch (err) {
+    showToast("Network error during admin login");
+  }
+});
+
+function loadAdminOrders(token) {
+  adminOrdersList.innerHTML = `<p style="color: var(--gray);">Loading orders...</p>`;
+  fetch("/api/admin-orders", {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(r => r.json())
+    .then(data => {
+      if (!data.orders || data.orders.length === 0) {
+        adminOrdersList.innerHTML = `<p style="color: var(--gray);">No orders found.</p>`;
+        return;
+      }
+      adminOrdersList.innerHTML = data.orders
+        .map(order => `
+          <div style="border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:1rem;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
+              <strong>Order ${order.order_id}</strong>
+              <span style="background:var(--surface);padding:2px 8px;border-radius:12px;font-size:0.8rem;">
+                ${order.order_status === 'confirmed' ? 'Confirmed' : 'Pending'}
+              </span>
+            </div>
+            <p style="margin:0;font-size:0.9rem;color:var(--gray);">
+              Date: ${new Date(order.created_at).toLocaleDateString()}<br>
+              Total: ${formatter.format(order.amount_total)}<br>
+              Payment: ${order.payment_status === 'paid' ? 'Paid ✅' : 'Pending ⏳'}
+            </p>
+          </div>
+        `)
+        .join("");
+    })
+    .catch(() => {
+      adminOrdersList.innerHTML = `<p style="color: var(--text-error);">Failed to load orders.</p>`;
+    });
+}
+
 
 if (myOrdersTrigger) {
   myOrdersTrigger.addEventListener("click", async () => {
