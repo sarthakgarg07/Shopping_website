@@ -1097,7 +1097,12 @@ document.querySelectorAll("[data-scroll]").forEach((btn) => {
   btn.addEventListener("click", () => {
     const target = document.getElementById(btn.dataset.scroll);
     if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Offset by 80px to account for the sticky header
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
+      });
     }
   });
 });
