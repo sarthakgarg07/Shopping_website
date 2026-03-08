@@ -379,6 +379,11 @@ const heroCounter = document.getElementById("heroCounter");
 const heroPrev = document.getElementById("heroPrev");
 const heroNext = document.getElementById("heroNext");
 
+const mobileCartTrigger = document.getElementById("mobileCartTrigger");
+const mobileProfileTrigger = document.getElementById("mobileProfileTrigger");
+const mobileSearchInput = document.getElementById("mobileSearchInput");
+const mobileCartCount = document.querySelector(".mobile-cart-count");
+
 const formatter = new Intl.NumberFormat("en-IN", {
   style: "currency",
   currency: "INR",
@@ -459,10 +464,15 @@ window.addEventListener("popstate", (event) => {
 
 const renderProducts = () => {
   productGrid.innerHTML = "";
-  const visibleProducts =
-    state.activeCategory === "All"
-      ? products
-      : products.filter((product) => product.category === state.activeCategory);
+
+  const searchTerm = mobileSearchInput ? mobileSearchInput.value.toLowerCase() : "";
+
+  const visibleProducts = products.filter((product) => {
+    const matchesCategory = state.activeCategory === "All" || product.category === state.activeCategory;
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm) || product.description.toLowerCase().includes(searchTerm);
+    return matchesCategory && matchesSearch;
+  });
+
   visibleProducts.forEach((product) => {
     const card = document.createElement("div");
     card.className = "product-card";
@@ -680,8 +690,9 @@ const initHeroCarousel = () => {
 };
 
 const updateCartCount = () => {
-  const total = state.cart.reduce((sum, item) => sum + item.qty, 0);
-  cartCount.textContent = total;
+  const count = state.cart.reduce((sum, item) => sum + item.qty, 0);
+  if (cartCount) cartCount.textContent = count;
+  if (mobileCartCount) mobileCartCount.textContent = count;
 };
 
 const renderCart = () => {
@@ -835,7 +846,47 @@ document.addEventListener("click", (event) => {
 });
 
 
+// ── Mobile Bottom Nav & Search Logic ──
+if (mobileSearchInput) {
+  mobileSearchInput.addEventListener("input", renderProducts);
+}
 
+if (mobileCartTrigger) {
+  mobileCartTrigger.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (cartTrigger) cartTrigger.click();
+  });
+}
+
+if (mobileProfileTrigger) {
+  mobileProfileTrigger.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (state.user) {
+      if (myOrdersTrigger) myOrdersTrigger.click();
+    } else {
+      if (loginTrigger) loginTrigger.click();
+    }
+  });
+}
+
+// Ensure the category tiles filter the grid and smoothly scroll down
+document.querySelectorAll(".mobile-category-grid .filter-btn").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    // Scroll to products
+    const target = document.getElementById("collections");
+    if (target) {
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: targetPosition, behavior: "smooth" });
+    }
+    // Use the existing logic of the desktop buttons to trigger the specific filter
+    const cat = btn.dataset.filter;
+    const matchingDesktopBtn = Array.from(document.querySelectorAll("#categoryFilters .filter-btn")).find(b => b.dataset.category === cat);
+    if (matchingDesktopBtn) {
+      matchingDesktopBtn.click();
+    }
+  });
+});
 
 if (myOrdersTrigger) {
   myOrdersTrigger.addEventListener("click", async () => {

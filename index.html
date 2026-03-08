@@ -50,7 +50,96 @@
 
 
 
-  <main>
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav" aria-label="Bottom Navigation">
+    <a href="#" class="bottom-nav-item active" data-scroll="home">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Home</span>
+    </a>
+    <a href="#" class="bottom-nav-item" data-scroll="collections">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7"></rect>
+        <rect x="14" y="3" width="7" height="7"></rect>
+        <rect x="14" y="14" width="7" height="7"></rect>
+        <rect x="3" y="14" width="7" height="7"></rect>
+      </svg>
+      <span>Shop</span>
+    </a>
+    <a href="#" class="bottom-nav-item cart-nav-item" id="mobileCartTrigger">
+      <div class="cart-icon-wrapper">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-count mobile-cart-count">0</span>
+      </div>
+      <span>Cart</span>
+    </a>
+    <a href="#" class="bottom-nav-item" id="mobileProfileTrigger">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span>Account</span>
+    </a>
+  </nav>
+
+  <main id="home">
+    <!-- Mobile App Search Bar -->
+    <div class="mobile-search-container">
+      <div class="search-bar">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="mobileSearchInput" placeholder="Search hampers, roses, gifts..." />
+        <svg class="mic-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+          <line x1="12" y1="19" x2="12" y2="23"></line>
+          <line x1="8" y1="23" x2="16" y2="23"></line>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Mobile Category Grid -->
+    <div class="mobile-category-grid">
+      <a href="#" class="category-tile filter-btn" data-filter="Signature Big Hampers">
+        <div class="tile-image-wrapper">
+          <img src="Website_Images/Big Blue Hamper.jpg" alt="Hampers" />
+        </div>
+        <span>Hampers</span>
+      </a>
+      <a href="#" class="category-tile filter-btn" data-filter="Bouquets & Roses">
+        <div class="tile-image-wrapper">
+          <img src="Website_Images/Handmade Red Rose.jpg" alt="Roses" />
+        </div>
+        <span>Roses</span>
+      </a>
+      <a href="#" class="category-tile filter-btn" data-filter="Occasion Hampers">
+        <div class="tile-image-wrapper">
+          <img src="Website_Images/Munch Bunch.jpg" alt="Occasions" />
+        </div>
+        <span>Occasions</span>
+      </a>
+      <a href="#" class="category-tile filter-btn" data-filter="Polaroid Gifts">
+        <div class="tile-image-wrapper">
+          <img src="Website_Images/Polaroids 5 Star Bouquet.jpg" alt="Polaroids" />
+        </div>
+        <span>Polaroids</span>
+      </a>
+    </div>
+
     <section class="hero">
       <div class="hero-marquee" aria-hidden="true">
         <div class="marquee-track">
