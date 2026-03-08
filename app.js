@@ -848,7 +848,22 @@ document.addEventListener("click", (event) => {
 
 // ── Mobile Bottom Nav & Search Logic ──
 if (mobileSearchInput) {
-  mobileSearchInput.addEventListener("input", renderProducts);
+  mobileSearchInput.addEventListener("input", () => {
+    // Render the filtered products
+    renderProducts();
+
+    // Automatically scroll to the shop section so they can see the results
+    if (mobileSearchInput.value.length > 0) {
+      const target = document.getElementById("collections");
+      if (target) {
+        const targetPosition = target.getBoundingClientRect().top + window.scrollY - 80;
+        // Check if we are already scrolled past the search bar to avoid jumpy behavior
+        if (window.scrollY < targetPosition - 100) {
+          window.scrollTo({ top: targetPosition, behavior: "smooth" });
+        }
+      }
+    }
+  });
 }
 
 if (mobileCartTrigger) {
