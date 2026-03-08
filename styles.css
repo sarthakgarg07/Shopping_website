@@ -1299,11 +1299,42 @@ main {
 /* Hidden on Desktop */
 .mobile-bottom-nav,
 .mobile-search-container,
-.mobile-category-grid {
+.mobile-category-grid,
+.mobile-delivery-location {
   display: none;
 }
 
 @media (max-width: 900px) {
+
+  /* Blend header into page background */
+  .site-header {
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: none;
+    position: relative;
+    /* Removes sticky nature so it scrolls up naturally */
+    padding-bottom: 0;
+  }
+
+  /* Delivery Location Widget */
+  .mobile-delivery-location {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    margin-left: auto;
+  }
+
+  .delivery-label {
+    color: var(--ink-700);
+    font-weight: 500;
+  }
+
+  .delivery-city {
+    font-weight: 800;
+    color: var(--pink-400);
+  }
 
   /* Hide the old complex header actions and nav links */
   .header-actions {
