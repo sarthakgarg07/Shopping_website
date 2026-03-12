@@ -696,7 +696,6 @@ const renderProducts = () => {
           class="carousel-image ${index === 0 ? "active" : ""}"
           src="${encodeURI(image)}"
           alt="${product.name} view ${index + 1}"
-          loading="lazy"
           data-index="${index}"
         />
       `
@@ -1368,23 +1367,6 @@ renderFilters();
 initHeroCarousel();
 updateCartCount();
 updateAuthUI();
-
-// ── Scroll Reveal ──
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("revealed");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
-
-document.querySelectorAll("[data-reveal]").forEach((el) => {
-  revealObserver.observe(el);
-});
 
 // ── Back to Top Button ──
 const backToTop = document.getElementById("backToTop");
