@@ -503,6 +503,15 @@ main {
   font-weight: 600;
 }
 
+.out-of-stock-badge {
+  background: #c0392b;
+}
+
+.out-of-stock-img {
+  filter: grayscale(60%);
+  opacity: 0.85;
+}
+
 .product-card h3 {
   font-size: 1.1rem;
 }
