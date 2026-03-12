@@ -622,12 +622,15 @@ const generateOrderItems = () =>
     })
     .filter(Boolean);
 
+const FREE_SHIPPING_THRESHOLD = 999;
+const SHIPPING_FEE = 99;
+
 const getCartTotals = () => {
   const subtotal = state.cart.reduce((sum, item) => {
     const product = products.find((entry) => entry.id === item.id);
     return product ? sum + product.price * item.qty : sum;
   }, 0);
-  const shipping = 0;
+  const shipping = subtotal > 0 && subtotal < FREE_SHIPPING_THRESHOLD ? SHIPPING_FEE : 0;
   return {
     subtotal,
     shipping,
@@ -730,7 +733,6 @@ const renderProducts = () => {
       </div>
       <div>
         <h3>${product.name}</h3>
-        <p>${product.description || ""}</p>
       </div>
       <div class="price-row">
         <span class="price">${formatter.format(product.price)}</span>
@@ -932,8 +934,17 @@ const renderCart = () => {
 
   const { subtotal, shipping, total } = getCartTotals();
   if (cartSubtotal) cartSubtotal.textContent = formatter.format(subtotal);
-  if (cartShipping) cartShipping.textContent = "Calculated at checkout";
-  if (cartTotal) cartTotal.textContent = formatter.format(subtotal);
+  if (cartShipping) {
+    if (shipping > 0) {
+      const needed = FREE_SHIPPING_THRESHOLD - subtotal;
+      cartShipping.innerHTML = `<span>${formatter.format(shipping)}</span><br><small style="color:var(--pink-400);font-size:0.75rem;">Add ${formatter.format(needed)} more for free delivery!</small>`;
+    } else if (subtotal > 0) {
+      cartShipping.innerHTML = `<span style="color:#27ae60;font-weight:600;">FREE 🎉</span>`;
+    } else {
+      cartShipping.textContent = formatter.format(0);
+    }
+  }
+  if (cartTotal) cartTotal.textContent = formatter.format(total);
 };
 
 // Handle shared URLs

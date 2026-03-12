@@ -51,8 +51,12 @@ module.exports = async (req, res) => {
       return json(res, 400, { error: "Invalid order amount." });
     }
 
+    const FREE_SHIPPING_THRESHOLD = 999;
+    const SHIPPING_FEE = 99;
+    const calculatedShipping = calculatedSubtotal < FREE_SHIPPING_THRESHOLD ? SHIPPING_FEE : 0;
+
     const orderId = createOrderId();
-    const finalAmount = calculatedSubtotal + Number(amount.shipping || 0);
+    const finalAmount = calculatedSubtotal + calculatedShipping;
 
     const razorpay = new Razorpay({
       key_id: process.env.RAZORPAY_KEY_ID,
