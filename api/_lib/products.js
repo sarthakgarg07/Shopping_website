@@ -1,14 +1,5 @@
 const productEntries = [
     {
-        id: "hamper-99",
-        name: "Test Product (1 Rupee)",
-        price: 1,
-        description: "Temporary 1 Rupee item for live payment gateway testing.",
-        image: "Website_Images/Handmade Red Rose.jpg",
-        category: "Signature Big Hampers",
-        featured: true,
-    },
-    {
         id: "hamper-01",
         name: "Luxury Blue Hamper",
         price: 1499,
