@@ -1,5 +1,33 @@
 const productEntries = [
     {
+        id: "hamper-bb-1",
+        name: "Big Blue Hamper",
+        price: 999,
+        image: "Website_Images/Big Blue New (Angle 1).jpeg",
+        category: "Signature Big Hampers",
+    },
+    {
+        id: "hamper-bb-2",
+        name: "Big Blue Hamper (Angle 2)",
+        price: 999,
+        image: "Website_Images/Big Blue New (Angle 2).jpeg",
+        category: "Signature Big Hampers",
+    },
+    {
+        id: "hamper-bb-3",
+        name: "Big Blue Hamper (Angle 3)",
+        price: 999,
+        image: "Website_Images/Big Blue New (Angle 3).jpeg",
+        category: "Signature Big Hampers",
+    },
+    {
+        id: "hamper-bb-4",
+        name: "Big Blue Hamper (Angle 4)",
+        price: 999,
+        image: "Website_Images/Big Blue New (Angle 4).jpeg",
+        category: "Signature Big Hampers",
+    },
+    {
         id: "hamper-01",
         name: "Luxury Blue Hamper",
         price: 1499,
