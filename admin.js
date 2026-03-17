@@ -124,19 +124,26 @@ async function fetchOrders(tokenInput) {
         }
 
         adminOrdersTbody.innerHTML = data.orders.map(order => {
+            const normalizedStatus = order.order_status === 'created' ? 'pending' : order.order_status;
             const statusOptions = statuses.map(st =>
-                `<option value="${st}" ${order.order_status === st ? 'selected' : ''}>${st.toUpperCase()}</option>`
+                `<option value="${st}" ${normalizedStatus === st ? 'selected' : ''}>${st.toUpperCase()}</option>`
             ).join("");
-
-            const badgeColor = order.payment_status === 'paid' ? 'bg-success' : 'bg-warning';
 
             let itemsListHtml = "No items recorded";
             try {
-                const items = typeof order.items === 'string' ? JSON.parse(order.items) : order.items;
-                if (Array.isArray(items)) {
-                    itemsListHtml = items.map(i => `<div style="font-size:0.85rem; color: var(--gray);">&bull; ${i.qty}x ${i.name}</div>`).join("");
+                const rawItems = order.items_json ?? order.items;
+                const items = typeof rawItems === 'string' ? JSON.parse(rawItems) : rawItems;
+                if (Array.isArray(items) && items.length > 0) {
+                    itemsListHtml = items.map(i => {
+                        const itemName = i.name || i.title || i.id || 'Product';
+                        const itemQty = i.qty || 1;
+                        return `<div style="font-size:0.85rem; color: var(--gray);">&bull; ${itemQty}x ${itemName}</div>`;
+                    }).join("");
                 }
             } catch (e) { }
+
+            const orderAddress = order.shipping_address || order.customer_address || 'Not provided';
+            const orderNotes = order.notes || order.customer_notes || 'None';
 
             return `
         <tr>
@@ -152,8 +159,8 @@ async function fetchOrders(tokenInput) {
             <div style="color:var(--gray); font-size:0.85rem;">📧 ${order.customer_email || 'N/A'}</div>
             <div style="color:var(--gray); font-size:0.85rem;">📞 ${order.customer_phone || 'N/A'}</div>
             <div style="margin-top:8px; font-size:0.85rem; background:var(--pink-50); padding: 8px; border-radius: 6px;">
-              <strong>Address:</strong> ${order.customer_address || 'Not provided'}<br>
-              <strong>Notes:</strong> ${order.customer_notes || 'None'}
+              <strong>Address:</strong> ${orderAddress}<br>
+              <strong>Notes:</strong> ${orderNotes}
             </div>
           </td>
           <td>
