@@ -560,7 +560,7 @@ const productEntries = [
     name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞",
     price: 1499,
     description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
-    image: "Website_Images/60 Raindrop Bangle and 12 Ghungroo Bangle.jpg",
+    image: "Website_Images/60 raindrop bangle box.jpeg",
     category: "Signature Big Hampers",
   },
   {
@@ -568,7 +568,7 @@ const productEntries = [
     name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞 (Angle 2)",
     price: 1499,
     description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
-    image: "Website_Images/60 Raindrop Bangle and 12 Ghungroo Bangle.jpg (2).jpg",
+    image: "Website_Images/60 raindrop bangle box (2).jpeg",
     category: "Signature Big Hampers",
   },
   {
@@ -576,7 +576,7 @@ const productEntries = [
     name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞 (Angle 3)",
     price: 1499,
     description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
-    image: "Website_Images/60 Raindrop Bangle and 12 Ghungroo Bangle.jpg (3).jpg",
+    image: "Website_Images/60 raindrop bangle box (3).jpeg",
     category: "Signature Big Hampers",
  }
 ];
