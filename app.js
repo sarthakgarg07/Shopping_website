@@ -555,6 +555,30 @@ const productEntries = [
     image: "Website_Images/Valentine's small Hamper (with Teddy).jpg",
     category: "Valentine's Collection",
   },
+  {
+    id: "hamper-37",
+    name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞",
+    price: 1499,
+    description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
+    image: "Website_Images/60 Raindrop Bangle and 12 Ghungroo Bangle.jpg",
+    category: "Signature Big Hampers",
+  },
+  {
+    id: "hamper-38",
+    name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞 (Angle 2)",
+    price: 1499,
+    description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
+    image: "Website_Images/60 Raindrop Bangle and 12 Ghungroo Bangle.jpg (2).jpg",
+    category: "Signature Big Hampers",
+  },
+  {
+    id: "hamper-39",
+    name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞 (Angle 3)",
+    price: 1499,
+    description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
+    image: "Website_Images/60 Raindrop Bangle and 12 Ghungroo Bangle.jpg (3).jpg",
+    category: "Signature Big Hampers",
+ }
 ];
 
 const baseName = (name) => name.replace(/\s*\(Angle\s*\d+\)$/i, "").trim();
