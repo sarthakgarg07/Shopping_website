@@ -929,7 +929,7 @@ const initHeroCarousel = () => {
     stopAutoPlay();
     startAutoPlay();
   };
-
+// Optional: Add keyboard navigation for accessibility
   if (heroPrev) {
     heroPrev.addEventListener("click", () => {
       goToSlide(activeIndex - 1);
