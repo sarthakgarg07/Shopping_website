@@ -1,6 +1,30 @@
 //testing github
 const productEntries = [
   {
+    id: "hamper-bbb-01",
+    name: "60 raindrop bangle box (Angle 1)",
+    price: 1499,
+    description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
+    image: "Website_Images/60 raindrop bangle box.jpeg",
+    category: "Bangles",
+  },
+  {
+    id: "hamper-bbb-02",
+    name: "60 raindrop bangle box (Angle 2)",
+    price: 1499,
+    description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
+    image: "Website_Images/60 raindrop bangle box (2).jpeg",
+    category: "Bangles",
+  },
+  {
+    id: "hamper-bbb-03",
+    name: "60 raindrop bangle box (Angle 3)",
+    price: 1499,
+    description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
+    image: "Website_Images/60 raindrop bangle box (3).jpeg",
+    category: "Bangles",
+  },
+  {
     id: "hamper-00",
     name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞",
     price: 399,
@@ -64,13 +88,21 @@ const productEntries = [
     image: "Website_Images/12 raindrop bangle box 8.jpeg",
     category: "Bangles",
   }, 
-  {   
-    id: "hamper-bb-1",
-    name: "Big Blue Hamper",
-    price: 999,
-    description: "It contain 12 blue items. Things may vary on availability. We will provide you more than mentioned but we can’t guarantee exact things … but we will try our best to satisfy your need as we send you a video before dispatching so you can make changes in your order ❤️",
-    image: "Website_Images/Big Blue New (Angle 1).jpeg",
-    category: "Signature Big Hampers",
+   {
+    id: "hamper-bc-1",
+    name: "Empty Bangle box ",
+    price: 399,
+    description: " size - 30x12x8 cm Please with color preference ( pink or golden ) on note after checking out your note or WhatsApp us on 9266857606 with your order id",
+    image: "Website_Images/Empty Bangle box.jpeg",
+    category: "Bangles",
+  },
+  {
+    id: "hamper-bc-2",
+    name: "Empty Bangle box (angle 1)",
+    price: 399,
+    description: " size - 30x12x8 cm Please with color preference ( pink or golden ) on note after checking out your note or WhatsApp us on 9266857606 with your order id",
+    image: "Website_Images/Empty Bangle box 2.jpeg",
+    category: "Bangles",
   },
   {
     id: "hamper-bb-2",
@@ -86,13 +118,7 @@ const productEntries = [
     image: "Website_Images/Big Blue New (Angle 3).jpeg",
     category: "Signature Big Hampers",
   },
-  {
-    id: "hamper-bb-4",
-    name: "Big Blue Hamper (Angle 4)",
-    price: 999,
-    image: "Website_Images/Big Blue New (Angle 4).jpeg",
-    category: "Signature Big Hampers",
-  },
+  
   {
     id: "hamper-bp-1",
     name: "Pink big hamper",
@@ -619,30 +645,7 @@ const productEntries = [
     image: "Website_Images/Valentine's small Hamper (with Teddy).jpg",
     category: "Valentine's Collection",
   },
-  {
-    id: "hamper-37",
-    name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞",
-    price: 1499,
-    description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
-    image: "Website_Images/60 raindrop bangle box.jpeg",
-    category: "Bangles",
-  },
-  {
-    id: "hamper-38",
-    name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞 (Angle 2)",
-    price: 1499,
-    description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
-    image: "Website_Images/60 raindrop bangle box (2).jpeg",
-    category: "Bangles",
-  },
-  {
-    id: "hamper-39",
-    name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞 (Angle 3)",
-    price: 1499,
-    description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
-    image: "Website_Images/60 raindrop bangle box (3).jpeg",
-    category: "Bangles",
- }
+  
  
 ];
 
