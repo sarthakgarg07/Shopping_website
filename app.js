@@ -561,7 +561,7 @@ const productEntries = [
     price: 1499,
     description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
     image: "Website_Images/60 raindrop bangle box.jpeg",
-    category: "Signature Big Hampers",
+    category: "Bangles",
   },
   {
     id: "hamper-38",
@@ -569,7 +569,7 @@ const productEntries = [
     price: 1499,
     description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
     image: "Website_Images/60 raindrop bangle box (2).jpeg",
-    category: "Signature Big Hampers",
+    category: "Bangles",
   },
   {
     id: "hamper-39",
@@ -577,8 +577,9 @@ const productEntries = [
     price: 1499,
     description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
     image: "Website_Images/60 raindrop bangle box (3).jpeg",
-    category: "Signature Big Hampers",
+    category: "Bangles",
  }
+ 
 ];
 
 const baseName = (name) => name.replace(/\s*\(Angle\s*\d+\)$/i, "").trim();
