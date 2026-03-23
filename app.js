@@ -29,7 +29,7 @@ const productEntries = [
     name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞",
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
-    image: "Website_Images/12 raindrop bangle box.jpeg",
+    image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle.jpeg",
     category: "Bangles",
   },
   {
@@ -37,7 +37,7 @@ const productEntries = [
     name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞 (Angle 2)",
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
-    image: "Website_Images/12 raindrop bangle box 2.jpeg",
+    image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 2.jpeg",
     category: "Bangles",
   },
   {
@@ -45,7 +45,7 @@ const productEntries = [
     name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞 (Angle 3)",
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
-    image: "Website_Images/12 raindrop bangle box 3.jpeg",
+    image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 3.jpeg",
     category: "Bangles",
   },
   {
@@ -53,7 +53,7 @@ const productEntries = [
     name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞 (Angle 4)",
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
-    image: "Website_Images/12 raindrop bangle box 4.jpeg",
+    image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 4.jpeg",
     category: "Bangles",
   },
   {
@@ -61,7 +61,7 @@ const productEntries = [
     name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞 (Angle 5)",
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
-    image: "Website_Images/12 raindrop bangle box 5.jpeg",
+    image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 5.jpeg",
     category: "Bangles",
   },
   {
@@ -69,7 +69,7 @@ const productEntries = [
     name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞 (Angle 6)",
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
-    image: "Website_Images/12 raindrop bangle box 6.jpeg",
+    image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 6.jpeg",
     category: "Bangles",
   },
   {
@@ -77,7 +77,7 @@ const productEntries = [
     name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞 (Angle 7)",
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
-    image: "Website_Images/12 raindrop bangle box 7.jpeg",
+    image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 7.jpeg",
     category: "Bangles",
   },
   {
@@ -85,7 +85,7 @@ const productEntries = [
     name: "12 raindrop bangle and 4 ghunghroo bangle ✨🪞 (Angle 8)",
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
-    image: "Website_Images/12 raindrop bangle box 8.jpeg",
+    image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 8.jpeg",
     category: "Bangles",
   }, 
    {
