@@ -1,6 +1,6 @@
 const productEntries = [
   {
-    id: "hamper-aaa-01 ",
+    id: "hamper-aaa-01",
     name: "52 raindrop and ghonghroo Kashmiri bangles 🪞🦢",
     price: 1349,
     description: "Description- 4 dozen different color bagles and 4 ghoonghroo bangles total 52 bangles with lights 🌸✨",
@@ -8,7 +8,7 @@ const productEntries = [
     category: "Jewellery",
   },
   {
-    id: "hamper-aaa-02 ",
+    id: "hamper-aaa-02",
     name: "52 raindrop and ghonghroo Kashmiri bangles 🪞🦢 (Angle 2)",
     price: 1349,
     description: "Description- 4 dozen different color bagles and 4 ghoonghroo bangles total 52 bangles with lights 🌸✨",
@@ -16,7 +16,7 @@ const productEntries = [
     category: "Jewellery",
   },
   {
-    id: "hamper-aaa-03 ",
+    id: "hamper-aaa-03",
     name: "52 raindrop and ghonghroo Kashmiri bangles 🪞🦢 (Angle 3)",
     price: 1349,
     description: "Description- 4 dozen different color bagles and 4 ghoonghroo bangles total 52 bangles with lights 🌸✨",
@@ -704,6 +704,23 @@ const productEntries = [
 
 const baseName = (name) => name.replace(/\s*\(Angle\s*\d+\)$/i, "").trim();
 
+const normalizeImagePath = (imagePath) => {
+  if (!imagePath || typeof imagePath !== "string") return imagePath;
+  let path = imagePath.trim();
+
+  // Keep absolute and remote URLs intact
+  if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("/")) {
+    return path;
+  }
+
+  // Make sure the image path is relative from the current HTML file
+  if (!path.startsWith("./")) {
+    path = "./" + path;
+  }
+
+  return path;
+};
+
 const mergeProductVariants = (entries) => {
   const merged = new Map();
 
@@ -720,13 +737,14 @@ const mergeProductVariants = (entries) => {
         category: entry.category,
         featured: Boolean(entry.featured),
         outOfStock: Boolean(entry.outOfStock),
-        images: [entry.image],
+        images: [normalizeImagePath(entry.image)],
       });
       return;
     }
 
-    if (!existing.images.includes(entry.image)) {
-      existing.images.push(entry.image);
+    const normalizedImage = normalizeImagePath(entry.image);
+    if (!existing.images.includes(normalizedImage)) {
+      existing.images.push(normalizedImage);
     }
     if (entry.featured) {
       existing.featured = true;
@@ -1007,7 +1025,8 @@ const initHeroCarousel = () => {
   slides.forEach((slide) => {
     const image = slide.dataset.image;
     if (image) {
-      slide.style.backgroundImage = `url("${encodeURI(image)}")`;
+      const resolvedImage = normalizeImagePath(image);
+      slide.style.backgroundImage = `url("${encodeURI(resolvedImage)}")`;
     }
   });
 
