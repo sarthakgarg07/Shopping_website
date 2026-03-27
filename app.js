@@ -912,7 +912,6 @@ const renderProducts = () => {
         : ""
       }
         </div>
-        <span class="product-tag">${product.category}</span>
         ${product.outOfStock ? '<span class="product-badge out-of-stock-badge">Out of Stock</span>' : (product.featured ? '<span class="product-badge">Featured</span>' : "")}
       </div>
       <div>
