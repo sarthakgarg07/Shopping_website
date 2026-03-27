@@ -1,28 +1,52 @@
-//testing github
 const productEntries = [
+  {
+    id: "hamper-aaa-01 ",
+    name: "52 raindrop and ghonghroo Kashmiri bangles 🪞🦢",
+    price: 1349,
+    description: "Description- 4 dozen different color bagles and 4 ghoonghroo bangles total 52 bangles with lights 🌸✨",
+    image: "Website_Images/52 raindrop and ghonghroo Kashmiri bangles 🪞🦢.jpeg",
+    category: "Jewellery",
+  },
+  {
+    id: "hamper-aaa-02 ",
+    name: "52 raindrop and ghonghroo Kashmiri bangles 🪞🦢 (Angle 2)",
+    price: 1349,
+    description: "Description- 4 dozen different color bagles and 4 ghoonghroo bangles total 52 bangles with lights 🌸✨",
+    image: "Website_Images/52 raindrop and ghonghroo Kashmiri bangles 🪞🦢(2).jpeg",
+    category: "Jewellery",
+  },
+  {
+    id: "hamper-aaa-03 ",
+    name: "52 raindrop and ghonghroo Kashmiri bangles 🪞🦢 (Angle 3)",
+    price: 1349,
+    description: "Description- 4 dozen different color bagles and 4 ghoonghroo bangles total 52 bangles with lights 🌸✨",
+    image: "Website_Images/52 raindrop and ghonghroo Kashmiri bangles 🪞🦢(3).jpeg",
+    category: "Jewellery",
+  },
   {
     id: "hamper-bbb-01",
     name: "60 raindrop bangle box (Angle 1)",
     price: 1499,
     description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
-    image: "Website_Images/60 raindrop bangle box.jpeg",
-    category: "Bangles",
+    image: "Website_Images/60 raindrop bangle box (2).jpeg",
+    category: "Jewellery",
   },
+  
   {
     id: "hamper-bbb-02",
     name: "60 raindrop bangle box (Angle 2)",
-    price: 1499,
+    price: 1499, 
     description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
-    image: "Website_Images/60 raindrop bangle box (2).jpeg",
-    category: "Bangles",
+    image: "Website_Images/60 raindrop bangle box (3).jpeg",
+    category: "Jewellery",
   },
   {
     id: "hamper-bbb-03",
     name: "60 raindrop bangle box (Angle 3)",
     price: 1499,
     description: "Description- 60 rain drop bagels 12 bangles in 5 different Colors 6 ghoonghroo bangles - including lights in box.",
-    image: "Website_Images/60 raindrop bangle box (3).jpeg",
-    category: "Bangles",
+    image: "Website_Images/60 raindrop bangle box.jpeg",
+    category: "Jewellery",
   },
   {
     id: "hamper-00",
@@ -30,7 +54,7 @@ const productEntries = [
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
     image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle.jpeg",
-    category: "Bangles",
+    category: "Jewellery",
   },
   {
     id: "hamper-00-1",
@@ -38,7 +62,7 @@ const productEntries = [
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
     image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 2.jpeg",
-    category: "Bangles",
+    category: "Jewellery",
   },
   {
     id: "hamper-00-2",
@@ -46,7 +70,7 @@ const productEntries = [
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
     image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 3.jpeg",
-    category: "Bangles",
+    category: "Jewellery",
   },
   {
     id: "hamper-00-3",
@@ -54,7 +78,7 @@ const productEntries = [
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
     image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 4.jpeg",
-    category: "Bangles",
+    category: "Jewellery",
   },
   {
     id: "hamper-00-4",
@@ -62,7 +86,7 @@ const productEntries = [
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
     image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 5.jpeg",
-    category: "Bangles",
+    category: "Jewellery",
   },
   {
     id: "hamper-00-5",
@@ -70,7 +94,7 @@ const productEntries = [
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
     image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 6.jpeg",
-    category: "Bangles",
+    category: "Jewellery",
   },
   {
     id: "hamper-00-6",
@@ -78,7 +102,7 @@ const productEntries = [
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
     image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 7.jpeg",
-    category: "Bangles",
+    category: "Jewellery",
   },
   {
     id: "hamper-00-7",
@@ -86,7 +110,7 @@ const productEntries = [
     price: 399,
     description: "Description- 12 raindrop bangles and 4 ghoonghroo bangles Please write color of the bangles (if any) on note after checking out your cart or WhatsApp us on 9266857606 with order id",
     image: "Website_Images/12 raindrop bangle and 4 ghunghroo bangle 8.jpeg",
-    category: "Bangles",
+    category: "Jewellery",
   }, 
    {
     id: "hamper-bc-1",
@@ -94,7 +118,7 @@ const productEntries = [
     price: 399,
     description: " size - 30x12x8 cm Please with color preference ( pink or golden ) on note after checking out your note or WhatsApp us on 9266857606 with your order id",
     image: "Website_Images/Empty Bangle box.jpeg",
-    category: "Bangles",
+    category: "Jewellery",
   },
   {
     id: "hamper-bc-2",
@@ -102,7 +126,7 @@ const productEntries = [
     price: 399,
     description: " size - 30x12x8 cm Please with color preference ( pink or golden ) on note after checking out your note or WhatsApp us on 9266857606 with your order id",
     image: "Website_Images/Empty Bangle box 2.jpeg",
-    category: "Bangles",
+    category: "Jewellery",
   },
   {
     id: "hamper-bb-2",
@@ -218,6 +242,54 @@ const productEntries = [
     image: "Website_Images/Pink White Rose Bouquet.jpg",
     category: "Bouquets & Roses",
     featured: true,
+  },
+  {
+    id: "hamper-rrr-1",
+    name: "Black Clover  Stainless Steel Bracelet",
+    price: 189,
+    description: "Stylish black clover bracelet made from stainless steel. A trendy accessory for any occasion.",
+    image: "Website_Images/Black Clover Stainless Steel Bracelet.jpeg",
+    category: "Jewellery",
+  },
+  {
+    id: "hamper-rrr-2",
+    name: "Black Clover  Stainless Steel Bracelet (Angle 2)",
+    price: 189,
+    description: "Stylish black clover bracelet made from stainless steel. A trendy accessory for any occasion.",
+    image: "Website_Images/Black Clover Stainless Steel Bracelet (2).jpeg",
+    category: "Jewellery",
+  },
+  {
+    id: "hamper-ddd-1",
+    name: "Rose Themed Gold Plated Anti Tarnish Pendant",
+    price: 199,
+    description: "✨ Elegant Floral Pendant Design: Stylish gold plated necklace for woman / for daily wear.",
+    image: "Website_Images/Rose Themed Gold Plated Anti Tarnish Pendant.jpeg",
+    category: "Jewellery",
+  },
+  {
+    id: "hamper-ddd-2",
+    name: "Rose Themed Gold Plated Anti Tarnish Pendant(Angle 2)",
+    price: 199,
+    description: "✨ Elegant Floral Pendant Design: Stylish gold plated necklace for woman / for daily wear.",
+    image: "Website_Images/Rose Themed Gold Plated Anti Tarnish Pendant (2).jpeg",
+    category: "Jewellery",
+  },
+  {
+    id: "hamper-vvv-1",
+    name: "Heart Gold Plated Anti Tarnish Pendant",
+    price: 199,
+    description: "Anti tarnish / gold plated, for daily wear use",
+    image: "Website_Images/Heart Gold Plated Anti Tarnish Pendant.jpeg",
+    category: "Jewellery",
+  },
+  {
+    id: "hamper-vvv-2",
+    name: "Heart Gold Plated Anti Tarnish Pendant(Angle 2)",
+    price: 199,
+    description: "Anti tarnish / gold plated, for daily wear use",
+    image: "Website_Images/Heart Gold Plated Anti Tarnish Pendant (2).jpeg",
+    category: "Jewellery",
   },
   {
     id: "hamper-06",
@@ -403,23 +475,7 @@ const productEntries = [
     image: "Website_Images/Batman Hamper (2).jpg",
     category: "Occasion Hampers",
   },
-  {
-    id: "hamper-best-friend",
-    name: "For My Best Friend Hamper",
-    price: 699,
-    description: "A heartfelt hamper curated for your best friend. Currently out of stock — check back soon!",
-    image: "Website_Images/For My Best Friend Hamper.png",
-    category: "Occasion Hampers",
-    outOfStock: true,
-  },
-  {
-    id: "hamper-best-friend-2",
-    name: "For My Best Friend Hamper (Angle 2)",
-    price: 699,
-    image: "Website_Images/For My Best Friend Hamper (2).png",
-    category: "Occasion Hampers",
-    outOfStock: true,
-  },
+
   {
     id: "hamper-best-friend-sm",
     name: "Best Friend Hamper",
@@ -720,20 +776,7 @@ const detailPrice = document.getElementById("detailPrice");
 const detailAddBtn = document.getElementById("detailAddBtn");
 const detailShareBtn = document.getElementById("detailShareBtn");
 
-const loginTrigger = document.getElementById("loginTrigger");
-const logoutTrigger = document.getElementById("logoutTrigger");
-const cartTrigger = document.getElementById("cartTrigger");
-const checkoutTrigger = document.getElementById("checkoutTrigger");
-const heroCarousel = document.getElementById("heroCarousel");
-const heroDots = document.getElementById("heroDots");
-const heroCounter = document.getElementById("heroCounter");
-const heroPrev = document.getElementById("heroPrev");
-const heroNext = document.getElementById("heroNext");
-
-const mobileCartTrigger = document.getElementById("mobileCartTrigger");
-const mobileProfileTrigger = document.getElementById("mobileProfileTrigger");
-const mobileSearchInput = document.getElementById("mobileSearchInput");
-const mobileCartCount = document.querySelector(".mobile-cart-count");
+const authModal = document.getElementById("authModal");
 
 const formatter = new Intl.NumberFormat("en-IN", {
   style: "currency",
