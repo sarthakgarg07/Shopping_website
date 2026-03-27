@@ -245,7 +245,7 @@ const productEntries = [
   },
   {
     id: "hamper-rrr-1",
-    name: "Black Clover  Stainless Steel Bracelet",
+    name: "Black Clover Stainless Steel Bracelet",
     price: 189,
     description: "Stylish black clover bracelet made from stainless steel. A trendy accessory for any occasion.",
     image: "Website_Images/Black Clover Stainless Steel Bracelet.jpeg",
@@ -253,7 +253,7 @@ const productEntries = [
   },
   {
     id: "hamper-rrr-2",
-    name: "Black Clover  Stainless Steel Bracelet (Angle 2)",
+    name: "Black Clover Stainless Steel Bracelet (Angle 2)",
     price: 189,
     description: "Stylish black clover bracelet made from stainless steel. A trendy accessory for any occasion.",
     image: "Website_Images/Black Clover Stainless Steel Bracelet (2).jpeg",
@@ -264,7 +264,7 @@ const productEntries = [
     name: "Rose Themed Gold Plated Anti Tarnish Pendant",
     price: 199,
     description: "✨ Elegant Floral Pendant Design: Stylish gold plated necklace for woman / for daily wear.",
-    image: "Website_Images/Rose Themed Gold Plated Anti Tarnish Pendant.jpeg",
+    image: "Website_Images/rose-themed-gold-plated-anti-tarnish-pendant.jpeg",
     category: "Jewellery",
   },
   {
@@ -272,7 +272,7 @@ const productEntries = [
     name: "Rose Themed Gold Plated Anti Tarnish Pendant(Angle 2)",
     price: 199,
     description: "✨ Elegant Floral Pendant Design: Stylish gold plated necklace for woman / for daily wear.",
-    image: "Website_Images/Rose Themed Gold Plated Anti Tarnish Pendant (2).jpeg",
+    image: "Website_Images/rose-themed-gold-plated-anti-tarnish-pendant-2.jpeg",
     category: "Jewellery",
   },
   {
