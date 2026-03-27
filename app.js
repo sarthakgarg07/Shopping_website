@@ -179,7 +179,7 @@ const productEntries = [
     description: "Premium quality box containing 12 blue items. Things may vary on availability — we will provide you more than mentioned but we can't guarantee exact things, but we will try our best to satisfy your needs.",
     image: "Website_Images/Big Blue Hamper (1).jpg",
     category: "Signature Big Hampers",
-    featured: true,
+    
   },
   {
     id: "hamper-02",
@@ -202,7 +202,7 @@ const productEntries = [
     description: "Premium quality box containing 12 luxury pink items. Things may vary on availability — we will provide you more than mentioned but we can't guarantee exact things, but we will try our best to satisfy your needs.",
     image: "Website_Images/Big Pink Hamper (1).jpg",
     category: "Signature Big Hampers",
-    featured: true,
+    
   },
   {
     id: "hamper-04",
@@ -232,7 +232,7 @@ const productEntries = [
     description: "Handcrafted rose made from satin ribbon. Colors available. Perfect for romantic gestures or as a keepsake gift.",
     image: "Website_Images/Handmade Red Rose.jpg",
     category: "Bouquets & Roses",
-    featured: true,
+    
   },
   {
     id: "hamper-rose-4",
@@ -241,7 +241,7 @@ const productEntries = [
     description: "Beautiful bouquet of 4 handmade roses made from satin ribbon. Colors available. A perfect romantic gift.",
     image: "Website_Images/Pink White Rose Bouquet.jpg",
     category: "Bouquets & Roses",
-    featured: true,
+    
   },
   {
     id: "hamper-rrr-1",
@@ -306,7 +306,7 @@ const productEntries = [
     description: "A stunning bouquet featuring 6-7 polaroids and 10-11 five star chocolates. Fragile item — difficult to deliver far.",
     image: "Website_Images/Polaroids 5 Star Bouquet.jpg",
     category: "Polaroid Gifts",
-    featured: true,
+    
   },
   {
     id: "hamper-09",
@@ -329,7 +329,7 @@ const productEntries = [
     description: "A unique hamper combining polaroid memories with premium chocolates. Makes for a wonderful personalised gift.",
     image: "Website_Images/Polaroid Chocolate Hamper.jpg",
     category: "Polaroid Gifts",
-    featured: true,
+    
   },
   {
     id: "hamper-11",
@@ -362,7 +362,7 @@ const productEntries = [
     description: "A delightful chocolate box containing 2 gold chocolates, 4 five stars, 4 Kit Kats and 2 Dairy Milks.",
     image: "Website_Images/Chocolate Square Hamper.jpg",
     category: "Occasion Hampers",
-    featured: true,
+    
   },
   {
     id: "hamper-choc-jhumka",
@@ -402,7 +402,6 @@ const productEntries = [
     description: "3 medium claw clips, 3 small claw clips, 2 satin scrunchies, 1 necklace, 1 pair of earrings, 1 Kinder Joy, 4-5 polaroids, 4-5 quotes and a happy birthday greeting.",
     image: "Website_Images/Lit Hamper.png",
     category: "Occasion Hampers",
-    featured: true,
   },
   {
     id: "hamper-lit-2",
@@ -425,7 +424,6 @@ const productEntries = [
     description: "This hamper contains 12 items. Things may vary on availability — we will provide more than 12 but can't guarantee exact things. We send a video before dispatching so you can make changes.",
     image: "Website_Images/Birthday Pink Hamper.jpg",
     category: "Occasion Hampers",
-    featured: true,
   },
   {
     id: "hamper-tennie",
@@ -457,7 +455,7 @@ const productEntries = [
     description: "8 beautiful jewels: 2 necklaces, 2 jhumkas, 2 studs and 2 bracelets. Perfect for the jewellery lover.",
     image: "Website_Images/Eightieee Hamper.jpg",
     category: "Occasion Hampers",
-    featured: true,
+    
   },
   {
     id: "hamper-batman",
@@ -466,7 +464,7 @@ const productEntries = [
     description: "Batman big letter with customisation, Batman mug, Batman action figure, Batman keychain and some chocolates. Perfect for Batman fans!",
     image: "Website_Images/Batman Hamper.jpg",
     category: "Occasion Hampers",
-    featured: true,
+    
   },
   {
     id: "hamper-batman-2",
@@ -474,16 +472,6 @@ const productEntries = [
     price: 1499,
     image: "Website_Images/Batman Hamper (2).jpg",
     category: "Occasion Hampers",
-  },
-
-  {
-    id: "hamper-best-friend-sm",
-    name: "Best Friend Hamper",
-    price: 599,
-    description: "A sweet and thoughtful hamper for your best friend. Currently out of stock — check back soon!",
-    image: "Website_Images/For My Best Friend Hamper.png",
-    category: "Occasion Hampers",
-    outOfStock: true,
   },
   {
     id: "hamper-blue-small",
@@ -540,7 +528,7 @@ const productEntries = [
     description: "Classic Valentine's gift packed with premium chocolates in a beautiful gift box.",
     image: "Website_Images/Valentine's Big Box Chocolate Hamper.jpg",
     category: "Valentine's Collection",
-    featured: true,
+    
   },
   {
     id: "hamper-15",
@@ -700,6 +688,15 @@ const productEntries = [
     description: "Sweet small Valentine's hamper with a handmade rose, a teddy, a KitKat and a cute bow. Colors depend on availability.",
     image: "Website_Images/Valentine's small Hamper (with Teddy).jpg",
     category: "Valentine's Collection",
+  },
+  {
+    id: "hamper-best-friend-sm",
+    name: "Best Friend Hamper",
+    price: 599,
+    description: "A sweet and thoughtful hamper for your best friend. Currently out of stock — check back soon!",
+    image: "Website_Images/For My Best Friend Hamper.png",
+    category: "Occasion Hampers",
+    outOfStock: true,
   },
   
  
