@@ -4,7 +4,7 @@ const productEntries = [
     name: "52 raindrop and ghonghroo Kashmiri bangles 🪞🦢",
     price: 1349,
     description: "Description- 4 dozen different color bagles and 4 ghoonghroo bangles total 52 bangles with lights 🌸✨",
-    image: "Website_Images/52 raindrop and ghonghroo Kashmiri bangles .jpeg",
+    image: "Website_Images/52-raindrop-and-ghonghroo-kashmiri-bangles.jpeg",
     category: "Jewellery",
   },
   {
@@ -12,7 +12,7 @@ const productEntries = [
     name: "52 raindrop and ghonghroo Kashmiri bangles 🪞🦢 (Angle 2)",
     price: 1349,
     description: "Description- 4 dozen different color bagles and 4 ghoonghroo bangles total 52 bangles with lights 🌸✨",
-    image: "Website_Images/52 raindrop and ghonghroo Kashmiri bangles (2).jpeg",
+    image: "Website_Images/52-raindrop-and-ghonghroo-kashmiri-bangles-2.jpeg",
     category: "Jewellery",
   },
   {
@@ -20,7 +20,7 @@ const productEntries = [
     name: "52 raindrop and ghonghroo Kashmiri bangles 🪞🦢 (Angle 3)",
     price: 1349,
     description: "Description- 4 dozen different color bagles and 4 ghoonghroo bangles total 52 bangles with lights 🌸✨",
-    image: "Website_Images/52 raindrop and ghonghroo Kashmiri bangles (3).jpeg",
+    image: "Website_Images/52-raindrop-and-ghonghroo-kashmiri-bangles-3.jpeg",
     category: "Jewellery",
   },
   {
@@ -280,7 +280,7 @@ const productEntries = [
     name: "Heart Gold Plated Anti Tarnish Pendant",
     price: 199,
     description: "Anti tarnish / gold plated, for daily wear use",
-    image: "Website_Images/Heart Gold Plated Anti Tarnish Pendant.jpeg",
+    image: "Website_Images/heart-gold-plated-anti-tarnish-pendant.jpeg",
     category: "Jewellery",
   },
   {
@@ -288,7 +288,7 @@ const productEntries = [
     name: "Heart Gold Plated Anti Tarnish Pendant(Angle 2)",
     price: 199,
     description: "Anti tarnish / gold plated, for daily wear use",
-    image: "Website_Images/Heart Gold Plated Anti Tarnish Pendant (2).jpeg",
+    image: "Website_Images/heart-gold-plated-anti-tarnish-pendant-2.jpeg",
     category: "Jewellery",
   },
   {
