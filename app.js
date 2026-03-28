@@ -1195,6 +1195,7 @@ productGrid.addEventListener("click", (event) => {
   const target = event.target.closest("button");
 
   if (target && (target.classList.contains("carousel-btn") || target.classList.contains("carousel-dot"))) {
+    event.stopPropagation();
     const carousel = target.closest(".image-carousel");
     if (!carousel) return;
     const currentIndex = Number(carousel.dataset.index || "0");
@@ -1210,6 +1211,7 @@ productGrid.addEventListener("click", (event) => {
   }
 
   if (target && target.classList.contains("add-btn")) {
+    event.stopPropagation();
     const id = target.dataset.id;
     if (!id) return;
     const clickedProduct = products.find(p => p.id === id);
