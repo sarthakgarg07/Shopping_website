@@ -793,6 +793,9 @@ const detailShareBtn = document.getElementById("detailShareBtn");
 
 const authModal = document.getElementById("authModal");
 
+const mobileSearchInput = document.getElementById("mobileSearchInput");
+const mobileCartCount = document.getElementById("mobileCartCount") || document.querySelector(".mobile-cart-count");
+
 const formatter = new Intl.NumberFormat("en-IN", {
   style: "currency",
   currency: "INR",
@@ -943,18 +946,9 @@ const renderProducts = () => {
     // ── Direct click listener on the Add to Cart button ──
     const addBtn = card.querySelector(".add-btn");
     if (addBtn && !product.outOfStock) {
-      const handleAddClick = (e) => {
+      addBtn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        e.stopImmediatePropagation();
-        if (!requireLogin()) return;
-        addToCart(product.id);
-      };
-      addBtn.addEventListener("click", handleAddClick);
-      addBtn.addEventListener("touchend", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
         if (!requireLogin()) return;
         addToCart(product.id);
       });
