@@ -549,23 +549,25 @@ main {
   min-height: 44px;
 }
 
-.add-btn:hover {
-  background: var(--ink-900);
-  color: #fff;
-}
-
 .price-row {
   position: relative;
   z-index: 2;
 }
 
-.product-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 30px 70px rgba(22, 20, 28, 0.25);
-}
+@media (hover: hover) {
+  .add-btn:hover {
+    background: var(--ink-900);
+    color: #fff;
+  }
 
-.product-card:hover .product-image {
-  transform: scale(1.03);
+  .product-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 30px 70px rgba(22, 20, 28, 0.25);
+  }
+
+  .product-card:hover .product-image {
+    transform: scale(1.03);
+  }
 }
 
 .feature-band {
@@ -1255,8 +1257,10 @@ main {
   position: relative;
 }
 
-.product-card:hover::before {
-  opacity: 1;
+@media (hover: hover) {
+  .product-card:hover::before {
+    opacity: 1;
+  }
 }
 
 /* ── Nav Link Underline Animation ── */
