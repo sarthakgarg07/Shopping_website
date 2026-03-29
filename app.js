@@ -793,6 +793,9 @@ const detailShareBtn = document.getElementById("detailShareBtn");
 
 const authModal = document.getElementById("authModal");
 
+const checkoutTrigger = document.getElementById("checkoutTrigger");
+const clearCartBtn = document.getElementById("clearCartBtn");
+
 const mobileSearchInput = document.getElementById("mobileSearchInput");
 const mobileCartCount = document.getElementById("mobileCartCount") || document.querySelector(".mobile-cart-count");
 
@@ -1232,11 +1235,25 @@ cartTrigger.addEventListener("click", () => {
   setModal(cartModal, true);
 });
 
-checkoutTrigger.addEventListener("click", () => {
-  if (!requireLogin()) return;
-  setModal(cartModal, false);
-  setModal(paymentModal, true);
-});
+if (checkoutTrigger) {
+  checkoutTrigger.addEventListener("click", () => {
+    if (!requireLogin()) return;
+    if (state.cart.length === 0) return;
+    setModal(cartModal, false);
+    setModal(paymentModal, true);
+  });
+}
+
+if (clearCartBtn) {
+  clearCartBtn.addEventListener("click", () => {
+    state.cart = [];
+    saveState();
+    updateCartCount();
+    renderCart();
+    setModal(cartModal, false);
+    showToast("Cart cleared");
+  });
+}
 
 cartItems.addEventListener("click", (event) => {
   const button = event.target.closest("button");
