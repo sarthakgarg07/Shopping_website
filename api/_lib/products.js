@@ -94,7 +94,7 @@ const productEntries = [
         id: "hamper-bp-1",
         name: "Pink big hamper",
         price: 999,
-        image: "Website_Images/Big Pink New (Angle 1).jpeg",
+       image: "Website_Images/Pink big hamper angle 11.jpeg",
         category: "Signature Big Hampers",
     },
     {
