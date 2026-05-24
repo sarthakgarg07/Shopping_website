@@ -212,14 +212,14 @@ const productEntries = [
   },
   {
     id: "hamper-bb-2",
-    name: "Big Blue Hamper (Angle 2)",
+    name: "Blue Big Hamper (Angle 2)",
     price: 999,
     image: "Website_Images/Big Blue New (Angle 2).jpeg",
     category: "Signature Big Hampers",
   },
   {
     id: "hamper-bb-3",
-    name: "Big Blue Hamper (Angle 3)",
+    name: "Blue Big Hamper (Angle 3)",
     price: 999,
     image: "Website_Images/Big Blue New (Angle 3).jpeg",
     category: "Signature Big Hampers",
